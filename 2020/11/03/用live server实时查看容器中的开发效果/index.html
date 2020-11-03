@@ -6,21 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.roger.ink">
-  <title>用VSCode在容器中调试Nodejs | roger的小酒馆</title>
+  <title>用live server实时查看容器中的开发效果 | roger的小酒馆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="概述在 VSCode 的容器中，调试是比较麻烦的。主要是容器内外的端口需要映射，浏览器能正常连接后才能进行调试。根据调试的对象不同，方式也不尽相同。下面分类来进行说明。 调试 Node.js用 VSCode 进入容器后，打开调试面板，点击面板上方的设置按钮后，会打开 launch.json 配置文件。在该文件中进行如下设置。 123456789101112&amp;#123;  &quot;versio">
+  <meta name="description" content="概述在 web 前端的开发过程中，经常会手动修改了一段代码之后需要立刻查看效果的时候。于是切换到浏览器，然后刷新网页进行查看。这个过程其实还可以更无缝的实现。 live server 就是一款实时查看开发的 web 效果的插件。当你修改了 web 前端后，live server 会自动刷新并及时反映出目前 web 的效果。那么如果我们是在容器中开发项目呢，下面我们就来看看如何实现。 安装和使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用VSCode在容器中调试Nodejs">
-<meta property="og:url" content="https://www.roger.ink/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95Nodejs/index.html">
+<meta property="og:title" content="用live server实时查看容器中的开发效果">
+<meta property="og:url" content="https://www.roger.ink/2020/11/03/%E7%94%A8live%20server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/index.html">
 <meta property="og:site_name" content="roger的小酒馆">
-<meta property="og:description" content="概述在 VSCode 的容器中，调试是比较麻烦的。主要是容器内外的端口需要映射，浏览器能正常连接后才能进行调试。根据调试的对象不同，方式也不尽相同。下面分类来进行说明。 调试 Node.js用 VSCode 进入容器后，打开调试面板，点击面板上方的设置按钮后，会打开 launch.json 配置文件。在该文件中进行如下设置。 123456789101112&amp;#123;  &quot;versio">
+<meta property="og:description" content="概述在 web 前端的开发过程中，经常会手动修改了一段代码之后需要立刻查看效果的时候。于是切换到浏览器，然后刷新网页进行查看。这个过程其实还可以更无缝的实现。 live server 就是一款实时查看开发的 web 效果的插件。当你修改了 web 前端后，live server 会自动刷新并及时反映出目前 web 的效果。那么如果我们是在容器中开发项目呢，下面我们就来看看如何实现。 安装和使用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.roger.ink/img/runtimes_node.png">
-<meta property="article:published_time" content="2020-11-03T07:30:26.000Z">
-<meta property="article:modified_time" content="2020-11-03T09:49:18.990Z">
+<meta property="og:image" content="https://www.roger.ink/img/live_server_demo.gif">
+<meta property="og:image" content="https://www.roger.ink/img/live_server.png">
+<meta property="og:image" content="https://www.roger.ink/img/live_server_start.jpg">
+<meta property="og:image" content="https://www.roger.ink/img/live_server_open.jpg">
+<meta property="og:image" content="https://www.roger.ink/img/live_server_result.gif">
+<meta property="og:image" content="https://www.roger.ink/img/live_server_exports.png">
+<meta property="og:image" content="https://www.roger.ink/img/live_server_web_extension.png">
+<meta property="og:image" content="https://www.roger.ink/img/live_server_web_extension_chrome.png">
+<meta property="article:published_time" content="2020-11-03T13:20:35.000Z">
+<meta property="article:modified_time" content="2020-11-03T14:49:33.409Z">
 <meta property="article:author" content="roger">
+<meta property="article:tag" content="vscode">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.roger.ink/img/runtimes_node.png">
+<meta name="twitter:image" content="https://www.roger.ink/img/live_server_demo.gif">
   
     <link rel="alternative" href="/atom.xml" title="roger的小酒馆" type="application/atom+xml">
   
@@ -156,46 +164,58 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-用VSCode在容器中调试Nodejs" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-用live server实时查看容器中的开发效果" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      用VSCode在容器中调试Nodejs
+      用live server实时查看容器中的开发效果
     </h1>
   
 
         
-        <a href="/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95Nodejs/" class="archive-article-date">
-  	<time datetime="2020-11-03T07:30:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-03</time>
+        <a href="/2020/11/03/%E7%94%A8live%20server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/" class="archive-article-date">
+  	<time datetime="2020-11-03T13:20:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/runtimes_node.png" alt="VSCode中的Node.js"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 VSCode 的容器中，调试是比较麻烦的。主要是容器内外的端口需要映射，浏览器能正常连接后才能进行调试。根据调试的对象不同，方式也不尽相同。下面分类来进行说明。</p>
-<h2 id="调试-Node-js"><a href="#调试-Node-js" class="headerlink" title="调试 Node.js"></a>调试 Node.js</h2><p>用 VSCode 进入容器后，打开调试面板，点击面板上方的设置按钮后，会打开 launch.json 配置文件。在该文件中进行如下设置。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Launch Program&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;skipFiles&quot;</span>: [<span class="string">&quot;&lt;node_internals&gt;/**&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;program&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;/server.js&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中的各个参数说明如下：</p>
+        <p><img src="/img/live_server_demo.gif" alt="live server demo"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 web 前端的开发过程中，经常会手动修改了一段代码之后需要立刻查看效果的时候。于是切换到浏览器，然后刷新网页进行查看。这个过程其实还可以更无缝的实现。</p>
+<p>live server 就是一款实时查看开发的 web 效果的插件。当你修改了 web 前端后，live server 会自动刷新并及时反映出目前 web 的效果。那么如果我们是在容器中开发项目呢，下面我们就来看看如何实现。</p>
+<h2 id="安装和使用-live-server-插件"><a href="#安装和使用-live-server-插件" class="headerlink" title="安装和使用 live server 插件"></a>安装和使用 live server 插件</h2><p>live server 插件的安装方式非常简单。在 VSCode 中的扩展中搜索到 live server 插件后选择安装即可。</p>
+<p><img src="/img/live_server.png" alt="live server"></p>
+<p>安装完成后，我们来启动 live server 插件。</p>
+<p>在 VSCode 的右下角，点击 Go Live 的图标启动服务。该插件默认会监听 5500 端口。</p>
+<p><img src="/img/live_server_start.jpg" alt="start live server"></p>
+<p>这时可以打开浏览器，输入需要查看的网址，也可以对 VSCode 文件管理器中的文件右键，选择用 live server 打开，然后在 VSCode 中更改选择的文件代码吧，你会发现，浏览器中内容也在不断更新以实时反映开发效果。</p>
+<p><img src="/img/live_server_open.jpg" alt="open live server"></p>
+<p>最终效果如下：</p>
+<p><img src="/img/live_server_result.gif" alt="open live server"></p>
+<h2 id="在容器中使用-live-server"><a href="#在容器中使用-live-server" class="headerlink" title="在容器中使用 live server"></a>在容器中使用 live server</h2><p>在容器中使用 live server，需要先在容器中安装 live server。</p>
+<p>由于我们调试的是容器中的应用，因此需要在容器启动的时候将容器中 live server 的端口映射出来。容器中的 live server 默认监听的端口是 5500，因此需要将 5500 端口映射出来。</p>
+<p><img src="/img/live_server_exports.png" alt="映射端口"></p>
+<p>上图中，我的 web 服务器端口是 3000，live server 端口是 5500。</p>
+<p>完成后，点击 VSCode 右下角 Go Live 按钮开启服务。 这是只能通过 live server 的 5500 端口观察到实时的效果。如果希望通过 3000 端口观察的话，需要额外安装 live server web extension 插件。</p>
+<p><img src="/img/live_server_web_extension.png" alt="live server web extension"></p>
+<p>live server web extension 可以让 PHP，.NET 和 Node.js 中的代码一样的工作在 live server 的实时观察模式下。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ritwickdey/live-server-web-extension">install live server web extension</a></p>
+<p>安装完成后，在浏览器中打开该插件，在该插件中进行如下设置。</p>
+<p><img src="/img/live_server_web_extension_chrome.png" alt="alt"></p>
+<p>其中的各个设置说明如下：</p>
 <ul>
-<li>version： 配置文件的版本号。</li>
-<li>configurations： 配置调试器的地方，可配置多个。</li>
-<li>type：表示调试的是 Node.js 代码。</li>
-<li>request：表示每次启动调试的方式。<ul>
-<li>lauch： 会重新启动一个 Node.js 进程来进行调试。</li>
-<li>attach： 会附加到一个已经存在的 Node.js 进程来进行调试。</li>
+<li>Live Reload：打开或关闭实时查看功能。</li>
+<li>I don’t want proxy setup(recommended)：是否不使用代理功能。</li>
+<li>Actual Server Address：需要调试的服务器的地址。</li>
+<li>Live Server Address：live server 服务的地址。</li>
 </ul>
-</li>
-<li>name：调试配置的名字。</li>
-<li>skipFiles：不需要进行调试的文件。</li>
-<li>program：启动调试后，程序的入口文件。</li>
-</ul>
-<p>设置完成后，在需要调试的地方打上断点，然后启动调试，用浏览器进行访问。如果没有问题，就可以看到程序已经停止在了断点处了。</p>
+<p>在 Actual Server Address 和 live Server Address 中填入合适的地址后，点击 Apply 就应用成功了。</p>
+<p>设置完成后，打开浏览器，输入需要查看的网址，然后在 VSCode 中更改选择的文件代码吧，你会发现，浏览器中内容也在不断更新以实时反映开发效果。</p>
+<p>以上就是 live server 的基本使用方式和在容器中的使用方式。</p>
 
       
 
@@ -225,6 +245,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -275,7 +306,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://www.roger.ink/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95Nodejs/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.roger.ink/2020/11/03/%E7%94%A8live%20server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -287,6 +318,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">用VSCode在容器中调试js</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -405,6 +446,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
