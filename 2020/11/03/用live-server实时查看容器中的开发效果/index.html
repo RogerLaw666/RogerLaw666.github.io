@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://www.roger.ink/img/live_server_web_extension.png">
 <meta property="og:image" content="https://www.roger.ink/img/live_server_web_extension_chrome.png">
 <meta property="article:published_time" content="2020-11-03T13:20:35.000Z">
-<meta property="article:modified_time" content="2020-11-03T15:08:26.969Z">
+<meta property="article:modified_time" content="2020-11-03T15:21:29.035Z">
 <meta property="article:author" content="roger">
 <meta property="article:tag" content="vscode">
 <meta name="twitter:card" content="summary">
@@ -200,7 +200,7 @@
 <p>由于我们调试的是容器中的应用，因此需要在容器启动的时候将容器中 live server 的端口映射出来。容器中的 live server 默认监听的端口是 5500，因此需要将 5500 端口映射出来。</p>
 <p><img src="/img/live_server_exports.png" alt="映射端口"></p>
 <p>上图中，我的 web 服务器端口是 3000，live server 端口是 5500。</p>
-<p>完成后，点击 VSCode 右下角 Go Live 按钮开启服务。 这是只能通过 live server 的 5500 端口观察到实时的效果。如果希望通过 3000 端口观察的话，需要额外安装 live server web extension 插件。</p>
+<p>映射端口完成后，点击 VSCode 右下角 Go Live 按钮开启服务。 不过这时只能通过 live server 的 5500 端口观察到实时的效果。如果希望通过 3000 端口观察的话，需要额外安装 live server web extension 插件。</p>
 <p><img src="/img/live_server_web_extension.png" alt="live server web extension"></p>
 <p>live server web extension 可以让 PHP，.NET 和 Node.js 中的代码一样的工作在 live server 的实时观察模式下。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/ritwickdey/live-server-web-extension">install live server web extension</a></p>
