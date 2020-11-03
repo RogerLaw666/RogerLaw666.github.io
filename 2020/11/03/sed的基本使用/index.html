@@ -16,7 +16,7 @@
 <meta property="og:description" content="概述sed 命令是利用脚本来处理文本文件。 sed 可依照脚本的指令来处理、编辑文本文件。 sed 主要用来自动编辑一个或多个文件、简化对文件的反复操作、编写转换程序等。 sed 在 man 手册中的介绍是 stream editor for filtering and transforming text sed 的参数 -n 不输出模式空间中的内容至屏幕 -e script, –expressi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-03T15:56:36.000Z">
-<meta property="article:modified_time" content="2020-11-03T16:00:04.379Z">
+<meta property="article:modified_time" content="2020-11-03T16:04:32.137Z">
 <meta property="article:author" content="roger">
 <meta property="article:tag" content="sed,linux">
 <meta name="twitter:card" content="summary">
@@ -201,7 +201,11 @@
 <li>$: 最后一行</li>
 </ul>
 </li>
-<li>步进: ~<br>1<del>2:所有奇数行<br>2</del>2:所有偶数行</li>
+<li>步进: ~<ul>
+<li>1~2:所有奇数行</li>
+<li>2~2:所有偶数行</li>
+</ul>
+</li>
 </ul>
 <h3 id="sed-的命令"><a href="#sed-的命令" class="headerlink" title="sed 的命令"></a>sed 的命令</h3><ul>
 <li>d: 删除</li>
@@ -495,11 +499,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">grep,linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">awk,linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">awk,linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">sed,linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -507,7 +511,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sed,linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">grep,linux</a>
               </li>
             
             <div class="clearfix"></div>
