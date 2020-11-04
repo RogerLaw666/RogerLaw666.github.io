@@ -6,7 +6,7 @@
   <link href="https://www.roger.ink/atom.xml" rel="self"/>
   
   <link href="https://www.roger.ink/"/>
-  <updated>2020-11-04T16:29:23.499Z</updated>
+  <updated>2020-11-04T16:54:45.069Z</updated>
   <id>https://www.roger.ink/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.roger.ink/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/"/>
     <id>https://www.roger.ink/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/</id>
     <published>2020-11-04T15:32:00.000Z</published>
-    <updated>2020-11-04T16:29:23.499Z</updated>
+    <updated>2020-11-04T16:54:45.069Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/img/modify_keys_title.png" alt="modify_key"></p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>对于使用 vim 和 emacs 的朋友来说，交换 capslock 和 control 的键位对于自己的习惯来说是至关重要的。那么如何设置才能交换呢，对于不同的操作系统有不同的方法。</p><a id="more"></a><h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><p>在 windows 系统中，最简便的方式是使用 KeyTweak 这款软件。</p><p><img src="/img/windows_modify_keys.png" alt="KeyTweak"></p><p>另外有些笔记本自带有一些键位设置的软件。比如微星的 MSI PER KEY RGB KEYBOARD 软件就可以在系统级别进行设置。</p><h2 id="macos"><a href="#macos" class="headerlink" title="macos"></a>macos</h2><p>在 macos 系统中，进入系统设置，键盘，修改键位就可以了。</p><p><img src="/img/macos_modify_keys.png" alt="macos"></p><p>另外推荐一款修改键位的神器，<a href="https://karabiner-elements.pqrs.org/">Karabiner-Elements</a>，喜欢修改键位的朋友不要错过。</p><h2 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h2><p>在 ubuntu 系统中，修改/etc/default/keyboard 文件，设置 XKBOPTIONS=”ctrl:nocaps”即可。</p><p><img src="/img/ubuntu_modify_keys.png" alt="ubuntu"></p><h2 id="centos"><a href="#centos" class="headerlink" title="centos"></a>centos</h2><p>在 centos 系统中，新建 swap_ctrl_capslock.kmap 文件，在文件中写入如下代码:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keymaps 0-127</span><br><span class="line">keycode 58=Control</span><br></pre></td></tr></table></figure><p>然后在命令行中执行:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo loadkeys swap_ctrl_capslock.kmap</span><br></pre></td></tr></table></figure><p><img src="/img/centos_modify_keys.png" alt="centos"></p><p>如需每次开机自动生效，可以将该指令写入~/.bashrc 文件中。</p><p>由于该指令需要 root 权限，如果不是以 root 用户身份登陆，需要在/etc/sudoer 中写入 NOPASSWD 以免输入密码。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$username</span> ALL=(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -31,6 +31,18 @@
     
     
     
+    <category term="tools" scheme="https://www.roger.ink/categories/tools/"/>
+    
+    
+    <category term="keyboard" scheme="https://www.roger.ink/tags/keyboard/"/>
+    
+    <category term="windows" scheme="https://www.roger.ink/tags/windows/"/>
+    
+    <category term="macos" scheme="https://www.roger.ink/tags/macos/"/>
+    
+    <category term="ubuntu" scheme="https://www.roger.ink/tags/ubuntu/"/>
+    
+    <category term="centos" scheme="https://www.roger.ink/tags/centos/"/>
     
   </entry>
   
