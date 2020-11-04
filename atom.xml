@@ -63,9 +63,9 @@
     <category term="linux" scheme="https://www.roger.ink/categories/linux/"/>
     
     
-    <category term="linux" scheme="https://www.roger.ink/tags/linux/"/>
-    
     <category term="sed" scheme="https://www.roger.ink/tags/sed/"/>
+    
+    <category term="linux" scheme="https://www.roger.ink/tags/linux/"/>
     
   </entry>
   
@@ -89,9 +89,9 @@
     <category term="linux" scheme="https://www.roger.ink/categories/linux/"/>
     
     
-    <category term="awk" scheme="https://www.roger.ink/tags/awk/"/>
-    
     <category term="linux" scheme="https://www.roger.ink/tags/linux/"/>
+    
+    <category term="awk" scheme="https://www.roger.ink/tags/awk/"/>
     
   </entry>
   
