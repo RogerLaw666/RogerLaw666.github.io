@@ -66,9 +66,9 @@
     <category term="linux" scheme="https://www.roger.ink/categories/linux/"/>
     
     
-    <category term="grep" scheme="https://www.roger.ink/tags/grep/"/>
-    
     <category term="linux" scheme="https://www.roger.ink/tags/linux/"/>
+    
+    <category term="grep" scheme="https://www.roger.ink/tags/grep/"/>
     
   </entry>
   
@@ -119,9 +119,9 @@
     <category term="linux" scheme="https://www.roger.ink/categories/linux/"/>
     
     
-    <category term="linux" scheme="https://www.roger.ink/tags/linux/"/>
-    
     <category term="awk" scheme="https://www.roger.ink/tags/awk/"/>
+    
+    <category term="linux" scheme="https://www.roger.ink/tags/linux/"/>
     
   </entry>
   
