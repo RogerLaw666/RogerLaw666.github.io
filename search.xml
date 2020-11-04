@@ -248,25 +248,6 @@
       </tags>
   </entry>
   <entry>
-    <title>grep的基本使用</title>
-    <url>/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><img src="/img/grep_title.jpg" alt="grep"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>grep 命令用于查找文件里符合条件的字符串。</p>
-<p>grep 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 -，则 grep 指令会从标准输入设备读取数据。</p>
-<p>grep 在 man 手册中的介绍是 print lines that match patterns。</p>
-<a id="more"></a>
-
-<h2 id="grep-的示例"><a href="#grep-的示例" class="headerlink" title="grep 的示例"></a>grep 的示例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep --color <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match</span></span><br><span class="line">grep -v <span class="variable">$something</span></span><br><span class="line"><span class="comment"># no space</span></span><br><span class="line">grep [^[:space:]] <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match more than one</span></span><br><span class="line">grep -vE <span class="string">&quot;<span class="variable">$something</span>|<span class="variable">$another</span>&quot;</span></span><br><span class="line"><span class="comment"># show line number</span></span><br><span class="line">grep -n <span class="variable">$something</span></span><br><span class="line"><span class="comment"># ignore case</span></span><br><span class="line">grep -i <span class="variable">$something</span></span><br><span class="line"><span class="comment"># only show match word</span></span><br><span class="line">grep -o <span class="variable">$something</span></span><br><span class="line"><span class="comment"># recursive</span></span><br><span class="line">grep -R <span class="variable">$something</span></span><br><span class="line"><span class="comment"># list files contains string</span></span><br><span class="line">grep -Rl <span class="variable">$something</span></span><br><span class="line"><span class="comment"># quiet</span></span><br><span class="line">grep -q <span class="variable">$something</span></span><br><span class="line"><span class="comment"># match word</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\&lt;world\&gt;&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\bworld\b&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># after</span></span><br><span class="line">grep -A <span class="variable">$after_num_of_lines</span></span><br><span class="line"><span class="comment"># before</span></span><br><span class="line">grep -B <span class="variable">$before_num_of_lines</span></span><br><span class="line"><span class="comment"># between</span></span><br><span class="line">grep -C <span class="variable">$between_num_of_lines</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>grep</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>sed的基本使用</title>
     <url>/2020/11/03/sed%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="/img/sed_title.jpg" alt="sed"></p>
@@ -362,6 +343,25 @@
       <tags>
         <tag>linux</tag>
         <tag>sed</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>grep的基本使用</title>
+    <url>/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><img src="/img/grep_title.jpg" alt="grep"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>grep 命令用于查找文件里符合条件的字符串。</p>
+<p>grep 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 -，则 grep 指令会从标准输入设备读取数据。</p>
+<p>grep 在 man 手册中的介绍是 print lines that match patterns。</p>
+<a id="more"></a>
+
+<h2 id="grep-的示例"><a href="#grep-的示例" class="headerlink" title="grep 的示例"></a>grep 的示例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep --color <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match</span></span><br><span class="line">grep -v <span class="variable">$something</span></span><br><span class="line"><span class="comment"># no space</span></span><br><span class="line">grep [^[:space:]] <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match more than one</span></span><br><span class="line">grep -vE <span class="string">&quot;<span class="variable">$something</span>|<span class="variable">$another</span>&quot;</span></span><br><span class="line"><span class="comment"># show line number</span></span><br><span class="line">grep -n <span class="variable">$something</span></span><br><span class="line"><span class="comment"># ignore case</span></span><br><span class="line">grep -i <span class="variable">$something</span></span><br><span class="line"><span class="comment"># only show match word</span></span><br><span class="line">grep -o <span class="variable">$something</span></span><br><span class="line"><span class="comment"># recursive</span></span><br><span class="line">grep -R <span class="variable">$something</span></span><br><span class="line"><span class="comment"># list files contains string</span></span><br><span class="line">grep -Rl <span class="variable">$something</span></span><br><span class="line"><span class="comment"># quiet</span></span><br><span class="line">grep -q <span class="variable">$something</span></span><br><span class="line"><span class="comment"># match word</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\&lt;world\&gt;&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\bworld\b&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># after</span></span><br><span class="line">grep -A <span class="variable">$after_num_of_lines</span></span><br><span class="line"><span class="comment"># before</span></span><br><span class="line">grep -B <span class="variable">$before_num_of_lines</span></span><br><span class="line"><span class="comment"># between</span></span><br><span class="line">grep -C <span class="variable">$between_num_of_lines</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>grep</tag>
       </tags>
   </entry>
   <entry>
