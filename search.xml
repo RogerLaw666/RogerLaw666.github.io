@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>grep的基本使用</title>
-    <url>/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><img src="/img/grep_title.jpg" alt="grep"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>grep 命令用于查找文件里符合条件的字符串。</p>
-<p>grep 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 -，则 grep 指令会从标准输入设备读取数据。</p>
-<p>grep 在 man 手册中的介绍是 print lines that match patterns。</p>
-<a id="more"></a>
-
-<h2 id="grep-的示例"><a href="#grep-的示例" class="headerlink" title="grep 的示例"></a>grep 的示例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep --color <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match</span></span><br><span class="line">grep -v <span class="variable">$something</span></span><br><span class="line"><span class="comment"># no space</span></span><br><span class="line">grep [^[:space:]] <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match more than one</span></span><br><span class="line">grep -vE <span class="string">&quot;<span class="variable">$something</span>|<span class="variable">$another</span>&quot;</span></span><br><span class="line"><span class="comment"># show line number</span></span><br><span class="line">grep -n <span class="variable">$something</span></span><br><span class="line"><span class="comment"># ignore case</span></span><br><span class="line">grep -i <span class="variable">$something</span></span><br><span class="line"><span class="comment"># only show match word</span></span><br><span class="line">grep -o <span class="variable">$something</span></span><br><span class="line"><span class="comment"># recursive</span></span><br><span class="line">grep -R <span class="variable">$something</span></span><br><span class="line"><span class="comment"># list files contains string</span></span><br><span class="line">grep -Rl <span class="variable">$something</span></span><br><span class="line"><span class="comment"># quiet</span></span><br><span class="line">grep -q <span class="variable">$something</span></span><br><span class="line"><span class="comment"># match word</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\&lt;world\&gt;&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\bworld\b&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># after</span></span><br><span class="line">grep -A <span class="variable">$after_num_of_lines</span></span><br><span class="line"><span class="comment"># before</span></span><br><span class="line">grep -B <span class="variable">$before_num_of_lines</span></span><br><span class="line"><span class="comment"># between</span></span><br><span class="line">grep -C <span class="variable">$between_num_of_lines</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>grep</tag>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>awk的基本使用</title>
     <url>/2020/11/03/awk%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="/img/awk_title.png" alt="awk"></p>
@@ -262,53 +243,27 @@
         <category>linux</category>
       </categories>
       <tags>
-        <tag>linux</tag>
         <tag>awk</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
-    <title>用VSCode在容器中调试js</title>
-    <url>/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/</url>
-    <content><![CDATA[<p><img src="/img/debug_js_title.png" alt="debug js"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 VSCode 的容器中，调试是比较麻烦的。主要是容器内外的端口需要映射，浏览器能正常连接后才能进行调试。根据调试的对象不同，方式也不尽相同。下面分别来进行说明。</p>
+    <title>grep的基本使用</title>
+    <url>/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><img src="/img/grep_title.jpg" alt="grep"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>grep 命令用于查找文件里符合条件的字符串。</p>
+<p>grep 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 -，则 grep 指令会从标准输入设备读取数据。</p>
+<p>grep 在 man 手册中的介绍是 print lines that match patterns。</p>
 <a id="more"></a>
 
-<h2 id="调试-Node-js"><a href="#调试-Node-js" class="headerlink" title="调试 Node.js"></a>调试 Node.js</h2><p>用 VSCode 进入容器后，打开调试面板，点击面板上方的设置按钮后，会打开 launch.json 配置文件，在该文件中进行如下设置。</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Launch Node.js&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;skipFiles&quot;</span>: [<span class="string">&quot;&lt;node_internals&gt;/**&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;program&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;/server.js&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中的各个参数说明如下:</p>
-<ul>
-<li>version: 配置文件的版本号。</li>
-<li>configurations: 配置调试器的地方，可配置多个。</li>
-<li>type: 表示调试的是 Node.js 代码。</li>
-<li>request: 表示每次启动调试的方式。<ul>
-<li>lauch: 会重新启动一个 Node.js 进程来进行调试。</li>
-<li>attach: 会附加到一个已经存在的 Node.js 进程来进行调试。</li>
-</ul>
-</li>
-<li>name: 调试配置的名字。</li>
-<li>skipFiles: 忽略掉不需要进行调试的文件。</li>
-<li>program: 启动调试后，程序的入口文件。</li>
-</ul>
-<p>设置完成后，用 VSCode 在容器中需要调试的地方打上断点，然后启动调试，用浏览器进行访问。如果没有问题，就可以看到程序已经停止在了断点处了。</p>
-<p><img src="/img/debug_nodejs_result.png" alt="最终调试结果"></p>
-<h2 id="调试普通-javascript-代码"><a href="#调试普通-javascript-代码" class="headerlink" title="调试普通 javascript 代码"></a>调试普通 javascript 代码</h2><p>在容器中调试 javascript，需要先在容器中安装 Debug for chrome 和 live server 两个插件。</p>
-<p><img src="/img/live_server.png" alt="live server"></p>
-<p><strong>重要</strong>: 由于我们调试的是容器中的应用，因此需要在容器启动的时候将容器中 live server 的端口映射出来。</p>
-<p><img src="/img/debug_for_chrome.png" alt="debug for chrome"></p>
-<p>如果对 live server 插件不熟悉，可以参考另外一篇关于 live server 的介绍。<br>首先启动 live server 插件。然后打开 launch.json 配置文件，在该插件中进行如下设置。</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;chrome&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Launch Chrome&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;url&quot;</span>: <span class="string">&quot;http://localhost:5500/public/show.html&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中最重要的参数是 url 的设置。它指向的是容器中的单个 html 文件。</p>
-<p>设置完成后，在需要调试的地方打上断点，然后启动调试，用浏览器进行访问。如果没有问题，就可以看到程序已经停止在了断点处了。</p>
-<p><img src="/img/debug_js_result.png" alt="最终调试结果"></p>
-<p>以上就是在容器中调试的内容了，更多关于在 vscode 中的调试技术，请参考<a href="https://github.com/microsoft/vscode-recipes">vscode-recipes</a>、<a href="https://www.freecodecamp.org/news/node-js-debugging/">node-js-debugging</a>和<a href="https://github.com/GoogleChromeLabs/ndb">ndb</a>。另外，在文中提到的 live server 是个很不错的插件，它同时也是一个结合浏览器实时查看开发效果的神器。关于它的介绍，请参考<a href="https://roger.ink/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/">用 live server 实时查看容器中的开发效果</a>。</p>
+<h2 id="grep-的示例"><a href="#grep-的示例" class="headerlink" title="grep 的示例"></a>grep 的示例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep --color <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match</span></span><br><span class="line">grep -v <span class="variable">$something</span></span><br><span class="line"><span class="comment"># no space</span></span><br><span class="line">grep [^[:space:]] <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match more than one</span></span><br><span class="line">grep -vE <span class="string">&quot;<span class="variable">$something</span>|<span class="variable">$another</span>&quot;</span></span><br><span class="line"><span class="comment"># show line number</span></span><br><span class="line">grep -n <span class="variable">$something</span></span><br><span class="line"><span class="comment"># ignore case</span></span><br><span class="line">grep -i <span class="variable">$something</span></span><br><span class="line"><span class="comment"># only show match word</span></span><br><span class="line">grep -o <span class="variable">$something</span></span><br><span class="line"><span class="comment"># recursive</span></span><br><span class="line">grep -R <span class="variable">$something</span></span><br><span class="line"><span class="comment"># list files contains string</span></span><br><span class="line">grep -Rl <span class="variable">$something</span></span><br><span class="line"><span class="comment"># quiet</span></span><br><span class="line">grep -q <span class="variable">$something</span></span><br><span class="line"><span class="comment"># match word</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\&lt;world\&gt;&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\bworld\b&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># after</span></span><br><span class="line">grep -A <span class="variable">$after_num_of_lines</span></span><br><span class="line"><span class="comment"># before</span></span><br><span class="line">grep -B <span class="variable">$before_num_of_lines</span></span><br><span class="line"><span class="comment"># between</span></span><br><span class="line">grep -C <span class="variable">$between_num_of_lines</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>tools</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>vscode</tag>
+        <tag>linux</tag>
+        <tag>grep</tag>
       </tags>
   </entry>
   <entry>
@@ -407,6 +362,51 @@
       <tags>
         <tag>linux</tag>
         <tag>sed</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用VSCode在容器中调试js</title>
+    <url>/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/</url>
+    <content><![CDATA[<p><img src="/img/debug_js_title.png" alt="debug js"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 VSCode 的容器中，调试是比较麻烦的。主要是容器内外的端口需要映射，浏览器能正常连接后才能进行调试。根据调试的对象不同，方式也不尽相同。下面分别来进行说明。</p>
+<a id="more"></a>
+
+<h2 id="调试-Node-js"><a href="#调试-Node-js" class="headerlink" title="调试 Node.js"></a>调试 Node.js</h2><p>用 VSCode 进入容器后，打开调试面板，点击面板上方的设置按钮后，会打开 launch.json 配置文件，在该文件中进行如下设置。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Launch Node.js&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;skipFiles&quot;</span>: [<span class="string">&quot;&lt;node_internals&gt;/**&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;program&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;/server.js&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中的各个参数说明如下:</p>
+<ul>
+<li>version: 配置文件的版本号。</li>
+<li>configurations: 配置调试器的地方，可配置多个。</li>
+<li>type: 表示调试的是 Node.js 代码。</li>
+<li>request: 表示每次启动调试的方式。<ul>
+<li>lauch: 会重新启动一个 Node.js 进程来进行调试。</li>
+<li>attach: 会附加到一个已经存在的 Node.js 进程来进行调试。</li>
+</ul>
+</li>
+<li>name: 调试配置的名字。</li>
+<li>skipFiles: 忽略掉不需要进行调试的文件。</li>
+<li>program: 启动调试后，程序的入口文件。</li>
+</ul>
+<p>设置完成后，用 VSCode 在容器中需要调试的地方打上断点，然后启动调试，用浏览器进行访问。如果没有问题，就可以看到程序已经停止在了断点处了。</p>
+<p><img src="/img/debug_nodejs_result.png" alt="最终调试结果"></p>
+<h2 id="调试普通-javascript-代码"><a href="#调试普通-javascript-代码" class="headerlink" title="调试普通 javascript 代码"></a>调试普通 javascript 代码</h2><p>在容器中调试 javascript，需要先在容器中安装 Debug for chrome 和 live server 两个插件。</p>
+<p><img src="/img/live_server.png" alt="live server"></p>
+<p><strong>重要</strong>: 由于我们调试的是容器中的应用，因此需要在容器启动的时候将容器中 live server 的端口映射出来。</p>
+<p><img src="/img/debug_for_chrome.png" alt="debug for chrome"></p>
+<p>如果对 live server 插件不熟悉，可以参考另外一篇关于 live server 的介绍。<br>首先启动 live server 插件。然后打开 launch.json 配置文件，在该插件中进行如下设置。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;chrome&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Launch Chrome&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;url&quot;</span>: <span class="string">&quot;http://localhost:5500/public/show.html&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中最重要的参数是 url 的设置。它指向的是容器中的单个 html 文件。</p>
+<p>设置完成后，在需要调试的地方打上断点，然后启动调试，用浏览器进行访问。如果没有问题，就可以看到程序已经停止在了断点处了。</p>
+<p><img src="/img/debug_js_result.png" alt="最终调试结果"></p>
+<p>以上就是在容器中调试的内容了，更多关于在 vscode 中的调试技术，请参考<a href="https://github.com/microsoft/vscode-recipes">vscode-recipes</a>、<a href="https://www.freecodecamp.org/news/node-js-debugging/">node-js-debugging</a>和<a href="https://github.com/GoogleChromeLabs/ndb">ndb</a>。另外，在文中提到的 live server 是个很不错的插件，它同时也是一个结合浏览器实时查看开发效果的神器。关于它的介绍，请参考<a href="https://roger.ink/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/">用 live server 实时查看容器中的开发效果</a>。</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
       </tags>
   </entry>
   <entry>
