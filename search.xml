@@ -248,6 +248,25 @@
       </tags>
   </entry>
   <entry>
+    <title>grep的基本使用</title>
+    <url>/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><img src="/img/grep_title.jpg" alt="grep"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>grep 命令用于查找文件里符合条件的字符串。</p>
+<p>grep 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 -，则 grep 指令会从标准输入设备读取数据。</p>
+<p>grep 在 man 手册中的介绍是 print lines that match patterns。</p>
+<a id="more"></a>
+
+<h2 id="grep-的示例"><a href="#grep-的示例" class="headerlink" title="grep 的示例"></a>grep 的示例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep --color <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match</span></span><br><span class="line">grep -v <span class="variable">$something</span></span><br><span class="line"><span class="comment"># no space</span></span><br><span class="line">grep [^[:space:]] <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match more than one</span></span><br><span class="line">grep -vE <span class="string">&quot;<span class="variable">$something</span>|<span class="variable">$another</span>&quot;</span></span><br><span class="line"><span class="comment"># show line number</span></span><br><span class="line">grep -n <span class="variable">$something</span></span><br><span class="line"><span class="comment"># ignore case</span></span><br><span class="line">grep -i <span class="variable">$something</span></span><br><span class="line"><span class="comment"># only show match word</span></span><br><span class="line">grep -o <span class="variable">$something</span></span><br><span class="line"><span class="comment"># recursive</span></span><br><span class="line">grep -R <span class="variable">$something</span></span><br><span class="line"><span class="comment"># list files contains string</span></span><br><span class="line">grep -Rl <span class="variable">$something</span></span><br><span class="line"><span class="comment"># quiet</span></span><br><span class="line">grep -q <span class="variable">$something</span></span><br><span class="line"><span class="comment"># match word</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\&lt;world\&gt;&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\bworld\b&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># after</span></span><br><span class="line">grep -A <span class="variable">$after_num_of_lines</span></span><br><span class="line"><span class="comment"># before</span></span><br><span class="line">grep -B <span class="variable">$before_num_of_lines</span></span><br><span class="line"><span class="comment"># between</span></span><br><span class="line">grep -C <span class="variable">$between_num_of_lines</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>grep</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>openssl的基本应用</title>
     <url>/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/</url>
     <content><![CDATA[<p><img src="/img/openssl_title.png" alt="openssl"></p>
@@ -398,62 +417,6 @@
       </tags>
   </entry>
   <entry>
-    <title>grep的基本使用</title>
-    <url>/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><img src="/img/grep_title.jpg" alt="grep"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>grep 命令用于查找文件里符合条件的字符串。</p>
-<p>grep 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 -，则 grep 指令会从标准输入设备读取数据。</p>
-<p>grep 在 man 手册中的介绍是 print lines that match patterns。</p>
-<a id="more"></a>
-
-<h2 id="grep-的示例"><a href="#grep-的示例" class="headerlink" title="grep 的示例"></a>grep 的示例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep --color <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match</span></span><br><span class="line">grep -v <span class="variable">$something</span></span><br><span class="line"><span class="comment"># no space</span></span><br><span class="line">grep [^[:space:]] <span class="variable">$something</span></span><br><span class="line"><span class="comment"># invert-match more than one</span></span><br><span class="line">grep -vE <span class="string">&quot;<span class="variable">$something</span>|<span class="variable">$another</span>&quot;</span></span><br><span class="line"><span class="comment"># show line number</span></span><br><span class="line">grep -n <span class="variable">$something</span></span><br><span class="line"><span class="comment"># ignore case</span></span><br><span class="line">grep -i <span class="variable">$something</span></span><br><span class="line"><span class="comment"># only show match word</span></span><br><span class="line">grep -o <span class="variable">$something</span></span><br><span class="line"><span class="comment"># recursive</span></span><br><span class="line">grep -R <span class="variable">$something</span></span><br><span class="line"><span class="comment"># list files contains string</span></span><br><span class="line">grep -Rl <span class="variable">$something</span></span><br><span class="line"><span class="comment"># quiet</span></span><br><span class="line">grep -q <span class="variable">$something</span></span><br><span class="line"><span class="comment"># match word</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\&lt;world\&gt;&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$something</span> | grep <span class="string">&#x27;\bworld\b&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># after</span></span><br><span class="line">grep -A <span class="variable">$after_num_of_lines</span></span><br><span class="line"><span class="comment"># before</span></span><br><span class="line">grep -B <span class="variable">$before_num_of_lines</span></span><br><span class="line"><span class="comment"># between</span></span><br><span class="line">grep -C <span class="variable">$between_num_of_lines</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>grep</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>交换capslock和control键位</title>
-    <url>/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/</url>
-    <content><![CDATA[<p><img src="/img/modify_keys_title.png" alt="modify_key"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>对于使用 vim 和 emacs 的朋友来说，交换 capslock 和 control 的键位对于自己的习惯来说是至关重要的。那么如何设置才能交换呢，对于不同的操作系统有不同的方法。</p>
-<a id="more"></a>
-
-<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><p>在 windows 系统中，最简便的方式是使用 KeyTweak 这款软件。</p>
-<p><img src="/img/windows_modify_keys.png" alt="KeyTweak"></p>
-<p>另外有些笔记本自带有一些键位设置的软件。比如微星的 MSI PER KEY RGB KEYBOARD 软件就可以在系统级别进行设置。</p>
-<h2 id="macos"><a href="#macos" class="headerlink" title="macos"></a>macos</h2><p>在 macos 系统中，进入系统设置，键盘，修改键位就可以了。</p>
-<p><img src="/img/macos_modify_keys.png" alt="macos"></p>
-<p>另外推荐一款修改键位的神器，<a href="https://karabiner-elements.pqrs.org/">Karabiner-Elements</a>，喜欢修改键位的朋友不要错过。</p>
-<h2 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h2><p>在 ubuntu 系统中，修改/etc/default/keyboard 文件，设置 XKBOPTIONS=”ctrl:nocaps”即可。</p>
-<p><img src="/img/ubuntu_modify_keys.png" alt="ubuntu"></p>
-<h2 id="centos"><a href="#centos" class="headerlink" title="centos"></a>centos</h2><p>在 centos 系统中，新建 swap_ctrl_capslock.kmap 文件，在文件中写入如下代码:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keymaps 0-127</span><br><span class="line">keycode 58=Control</span><br></pre></td></tr></table></figure>
-
-<p>然后在命令行中执行:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo loadkeys swap_ctrl_capslock.kmap</span><br></pre></td></tr></table></figure>
-
-<p><img src="/img/centos_modify_keys.png" alt="centos"></p>
-<p>如需每次开机自动生效，可以将该指令写入~/.bashrc 文件中。</p>
-<p>由于该指令需要 root 权限，如果不是以 root 用户身份登陆，需要在/etc/sudoer 中写入 NOPASSWD 以免输入密码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$username</span> ALL=(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>keyboard</tag>
-        <tag>windows</tag>
-        <tag>macos</tag>
-        <tag>ubuntu</tag>
-        <tag>centos</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>sed的基本使用</title>
     <url>/2020/11/03/sed%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="/img/sed_title.jpg" alt="sed"></p>
@@ -594,6 +557,43 @@
       </categories>
       <tags>
         <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>交换capslock和control键位</title>
+    <url>/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/</url>
+    <content><![CDATA[<p><img src="/img/modify_keys_title.png" alt="modify_key"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>对于使用 vim 和 emacs 的朋友来说，交换 capslock 和 control 的键位对于自己的习惯来说是至关重要的。那么如何设置才能交换呢，对于不同的操作系统有不同的方法。</p>
+<a id="more"></a>
+
+<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><p>在 windows 系统中，最简便的方式是使用 KeyTweak 这款软件。</p>
+<p><img src="/img/windows_modify_keys.png" alt="KeyTweak"></p>
+<p>另外有些笔记本自带有一些键位设置的软件。比如微星的 MSI PER KEY RGB KEYBOARD 软件就可以在系统级别进行设置。</p>
+<h2 id="macos"><a href="#macos" class="headerlink" title="macos"></a>macos</h2><p>在 macos 系统中，进入系统设置，键盘，修改键位就可以了。</p>
+<p><img src="/img/macos_modify_keys.png" alt="macos"></p>
+<p>另外推荐一款修改键位的神器，<a href="https://karabiner-elements.pqrs.org/">Karabiner-Elements</a>，喜欢修改键位的朋友不要错过。</p>
+<h2 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h2><p>在 ubuntu 系统中，修改/etc/default/keyboard 文件，设置 XKBOPTIONS=”ctrl:nocaps”即可。</p>
+<p><img src="/img/ubuntu_modify_keys.png" alt="ubuntu"></p>
+<h2 id="centos"><a href="#centos" class="headerlink" title="centos"></a>centos</h2><p>在 centos 系统中，新建 swap_ctrl_capslock.kmap 文件，在文件中写入如下代码:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keymaps 0-127</span><br><span class="line">keycode 58=Control</span><br></pre></td></tr></table></figure>
+
+<p>然后在命令行中执行:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo loadkeys swap_ctrl_capslock.kmap</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/centos_modify_keys.png" alt="centos"></p>
+<p>如需每次开机自动生效，可以将该指令写入~/.bashrc 文件中。</p>
+<p>由于该指令需要 root 权限，如果不是以 root 用户身份登陆，需要在/etc/sudoer 中写入 NOPASSWD 以免输入密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$username</span> ALL=(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>keyboard</tag>
+        <tag>windows</tag>
+        <tag>macos</tag>
+        <tag>ubuntu</tag>
+        <tag>centos</tag>
       </tags>
   </entry>
   <entry>
@@ -956,7 +956,7 @@
 <tr>
 <td>AllowUsers</td>
 <td></td>
-<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么将仅允许这些用户登录，而拒绝其它所有用户。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。例如:AllowUsers <a href="mailto:&#97;&#100;&#109;&#105;&#110;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#56;&#x2e;&#48;&#x2e;&#x31;">&#97;&#100;&#109;&#105;&#110;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#56;&#x2e;&#48;&#x2e;&#x31;</a>。指定多用户用空格:AllowUsers <a href="mailto:&#x61;&#100;&#109;&#x69;&#x6e;&#x40;&#x31;&#57;&#x32;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x30;&#46;&#x31;">&#x61;&#100;&#109;&#x69;&#x6e;&#x40;&#x31;&#57;&#x32;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x30;&#46;&#x31;</a> user1</td>
+<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么将仅允许这些用户登录，而拒绝其它所有用户。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。例如:AllowUsers <a href="mailto:&#97;&#x64;&#x6d;&#x69;&#x6e;&#x40;&#49;&#x39;&#50;&#46;&#x31;&#54;&#56;&#46;&#48;&#x2e;&#49;">&#97;&#x64;&#x6d;&#x69;&#x6e;&#x40;&#49;&#x39;&#50;&#46;&#x31;&#54;&#56;&#46;&#48;&#x2e;&#49;</a>。指定多用户用空格:AllowUsers <a href="mailto:&#97;&#100;&#x6d;&#105;&#x6e;&#x40;&#x31;&#57;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#48;&#46;&#49;">&#97;&#100;&#x6d;&#105;&#x6e;&#x40;&#x31;&#57;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#48;&#46;&#49;</a> user1</td>
 </tr>
 <tr>
 <td>AllowGroups</td>
@@ -980,20 +980,29 @@
 </tr>
 </tbody></table>
 <h2 id="ssh-服务的最佳实践"><a href="#ssh-服务的最佳实践" class="headerlink" title="ssh 服务的最佳实践"></a>ssh 服务的最佳实践</h2><ul>
-<li>不要使用默认端口</li>
-<li>禁止使用 protocol version 1</li>
-<li>限制可登录的用户</li>
-<li>设定空闲会话超时时长</li>
-<li>利用防火墙设置 ssh 访问策略</li>
-<li>仅监听特定的 IP 地址</li>
-<li>基于口令认证时，使用强密码策略<ul>
-<li>tr -dc A-Za-z0-9_ &lt; /dev/urandom | head -c 30 | xargs</li>
-</ul>
+<li><p>不要使用默认端口</p>
 </li>
-<li>使用基于密钥的认证</li>
-<li>禁止使用空密码</li>
-<li>禁止 root 用户直接登录</li>
-<li>限制 ssh 的访问频度和并发在线数</li>
+<li><p>禁止使用 protocol version 1</p>
+</li>
+<li><p>限制可登录的用户</p>
+</li>
+<li><p>设定空闲会话超时时长</p>
+</li>
+<li><p>利用防火墙设置 ssh 访问策略</p>
+</li>
+<li><p>仅监听特定的 IP 地址</p>
+</li>
+<li><p>基于口令认证时，使用强密码策略</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tr -dc A-Za-z0-9\_ &lt; /dev/urandom | head -c 30 | xargs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用基于密钥的认证</p>
+</li>
+<li><p>禁止使用空密码</p>
+</li>
+<li><p>禁止 root 用户直接登录</p>
+</li>
+<li><p>限制 ssh 的访问频度和并发在线数</p>
+</li>
 </ul>
 <h2 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -p port: 远程服务器监听的端口</span></span><br><span class="line"><span class="comment"># -X: 支持x11转发</span></span><br><span class="line"><span class="comment"># -Y: 支持信任的x11转发</span></span><br><span class="line">ssh <span class="variable">$username</span>@<span class="variable">$host</span></span><br></pre></td></tr></table></figure>
 

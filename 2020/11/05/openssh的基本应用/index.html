@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.roger.ink/img/openssh_title.png">
 <meta property="article:published_time" content="2020-11-05T14:53:24.000Z">
-<meta property="article:modified_time" content="2020-11-05T15:12:38.678Z">
+<meta property="article:modified_time" content="2020-11-05T15:13:42.446Z">
 <meta property="article:author" content="roger">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="openssl">
@@ -225,7 +225,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-11-05 22:53:24 / 修改时间：23:12:38" itemprop="dateCreated datePublished" datetime="2020-11-05T22:53:24+08:00">2020-11-05</time>
+              <time title="创建时间：2020-11-05 22:53:24 / 修改时间：23:13:42" itemprop="dateCreated datePublished" datetime="2020-11-05T22:53:24+08:00">2020-11-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -598,7 +598,7 @@
 <tr>
 <td>AllowUsers</td>
 <td></td>
-<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么将仅允许这些用户登录，而拒绝其它所有用户。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。例如:AllowUsers <a href="mailto:&#97;&#100;&#109;&#105;&#110;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#56;&#x2e;&#48;&#x2e;&#x31;">&#97;&#100;&#109;&#105;&#110;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#56;&#x2e;&#48;&#x2e;&#x31;</a>。指定多用户用空格:AllowUsers <a href="mailto:&#x61;&#100;&#109;&#x69;&#x6e;&#x40;&#x31;&#57;&#x32;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x30;&#46;&#x31;">&#x61;&#100;&#109;&#x69;&#x6e;&#x40;&#x31;&#57;&#x32;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x30;&#46;&#x31;</a> user1</td>
+<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么将仅允许这些用户登录，而拒绝其它所有用户。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。例如:AllowUsers <a href="mailto:&#97;&#x64;&#x6d;&#x69;&#x6e;&#x40;&#49;&#x39;&#50;&#46;&#x31;&#54;&#56;&#46;&#48;&#x2e;&#49;">&#97;&#x64;&#x6d;&#x69;&#x6e;&#x40;&#49;&#x39;&#50;&#46;&#x31;&#54;&#56;&#46;&#48;&#x2e;&#49;</a>。指定多用户用空格:AllowUsers <a href="mailto:&#97;&#100;&#x6d;&#105;&#x6e;&#x40;&#x31;&#57;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#48;&#46;&#49;">&#97;&#100;&#x6d;&#105;&#x6e;&#x40;&#x31;&#57;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#48;&#46;&#49;</a> user1</td>
 </tr>
 <tr>
 <td>AllowGroups</td>
@@ -622,20 +622,29 @@
 </tr>
 </tbody></table>
 <h2 id="ssh-服务的最佳实践"><a href="#ssh-服务的最佳实践" class="headerlink" title="ssh 服务的最佳实践"></a>ssh 服务的最佳实践</h2><ul>
-<li>不要使用默认端口</li>
-<li>禁止使用 protocol version 1</li>
-<li>限制可登录的用户</li>
-<li>设定空闲会话超时时长</li>
-<li>利用防火墙设置 ssh 访问策略</li>
-<li>仅监听特定的 IP 地址</li>
-<li>基于口令认证时，使用强密码策略<ul>
-<li>tr -dc A-Za-z0-9_ &lt; /dev/urandom | head -c 30 | xargs</li>
-</ul>
+<li><p>不要使用默认端口</p>
 </li>
-<li>使用基于密钥的认证</li>
-<li>禁止使用空密码</li>
-<li>禁止 root 用户直接登录</li>
-<li>限制 ssh 的访问频度和并发在线数</li>
+<li><p>禁止使用 protocol version 1</p>
+</li>
+<li><p>限制可登录的用户</p>
+</li>
+<li><p>设定空闲会话超时时长</p>
+</li>
+<li><p>利用防火墙设置 ssh 访问策略</p>
+</li>
+<li><p>仅监听特定的 IP 地址</p>
+</li>
+<li><p>基于口令认证时，使用强密码策略</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tr -dc A-Za-z0-9\_ &lt; /dev/urandom | head -c 30 | xargs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用基于密钥的认证</p>
+</li>
+<li><p>禁止使用空密码</p>
+</li>
+<li><p>禁止 root 用户直接登录</p>
+</li>
+<li><p>限制 ssh 的访问频度和并发在线数</p>
+</li>
 </ul>
 <h2 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -p port: 远程服务器监听的端口</span></span><br><span class="line"><span class="comment"># -X: 支持x11转发</span></span><br><span class="line"><span class="comment"># -Y: 支持信任的x11转发</span></span><br><span class="line">ssh <span class="variable">$username</span>@<span class="variable">$host</span></span><br></pre></td></tr></table></figure>
 
