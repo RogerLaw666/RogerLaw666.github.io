@@ -248,6 +248,156 @@
       </tags>
   </entry>
   <entry>
+    <title>openssl的基本应用</title>
+    <url>/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<p><img src="/img/openssl_title.png" alt="openssl"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在计算机网络上，OpenSSL 是一个开放源代码的软件库包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。</p>
+<p>SSL 是 Secure Sockets Layer（安全套接层协议）的缩写，可以在 Internet 上提供秘密性传输。Netscape 公司在推出第一个 Web 浏览器的同时，提出了 SSL 协议标准。其目标是保证两个应用间通信的保密性和可靠性,可在服务器端和用户端同时实现支持。已经成为 Internet 上保密通讯的工业标准。</p>
+<p>SSL 能使用户/服务器应用之间的通信不被攻击者窃听，并且始终对服务器进行认证，还可选择对用户进行认证。SSL 协议要求建立在可靠的传输层协议(TCP)之上。SSL 协议的优势在于它是与应用层协议独立无关的，高层的应用层协议(例如：HTTP，FTP，TELNET 等)能透明地建立于 SSL 协议之上。SSL 协议在应用层协议通信之前就已经完成加密算法、通信密钥的协商及服务器认证工作。在此之后应用层协议所传送的数据都会被加密，从而保证通信的私密性。</p>
+<a id="more"></a>
+
+<h2 id="加密算法和协议"><a href="#加密算法和协议" class="headerlink" title="加密算法和协议"></a>加密算法和协议</h2><h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p>加密和解密使用同一个密钥。</p>
+<h4 id="对称加密的类型"><a href="#对称加密的类型" class="headerlink" title="对称加密的类型"></a>对称加密的类型</h4><ul>
+<li>DES: Data Encryption Standard</li>
+<li>3DES: Triple DES</li>
+<li>AES: Advanced Encryption Standard(128bits, 192bits, 256bits, 384bits)</li>
+<li>Blowfish</li>
+<li>Twofish</li>
+<li>IDEA</li>
+<li>RC6</li>
+<li>CAST5</li>
+</ul>
+<h4 id="对称加密的特性"><a href="#对称加密的特性" class="headerlink" title="对称加密的特性"></a>对称加密的特性</h4><ul>
+<li>加密、解密使用同一个密钥</li>
+<li>将原始数据分割成为固定大小的块，逐个进行加密</li>
+</ul>
+<h4 id="对称加密的缺陷"><a href="#对称加密的缺陷" class="headerlink" title="对称加密的缺陷"></a>对称加密的缺陷</h4><ul>
+<li>密钥过多</li>
+<li>密钥分发困难</li>
+</ul>
+<h3 id="公钥加密"><a href="#公钥加密" class="headerlink" title="公钥加密"></a>公钥加密</h3><p>密钥分为公钥与私钥。</p>
+<h4 id="公钥加密的公钥"><a href="#公钥加密的公钥" class="headerlink" title="公钥加密的公钥"></a>公钥加密的公钥</h4><p>从私钥中提取产生，可公开给所有人，也叫 pubkey。</p>
+<h4 id="公钥加密的私钥"><a href="#公钥加密的私钥" class="headerlink" title="公钥加密的私钥"></a>公钥加密的私钥</h4><p>通过工具创建，使用者自己留存，必须保证其私密性，也叫 secret key。</p>
+<h4 id="公钥加密的特性"><a href="#公钥加密的特性" class="headerlink" title="公钥加密的特性"></a>公钥加密的特性</h4><p>用公钥加密的数据，只能使用与之配对儿的私钥解密，反之亦然。</p>
+<h4 id="公钥加密的用途"><a href="#公钥加密的用途" class="headerlink" title="公钥加密的用途"></a>公钥加密的用途</h4><ul>
+<li>数字签名: 主要在于让接收方确认发送方的身份</li>
+<li>密钥交换: 发送方用对方公钥加密一个对称密钥，并发送给对方</li>
+<li>数据加密</li>
+</ul>
+<h4 id="公钥加密的算法"><a href="#公钥加密的算法" class="headerlink" title="公钥加密的算法"></a>公钥加密的算法</h4><p>RSA，DSA，ELGamal<br>DSS: Digital Signature Standard<br>DSA: Digital Signature Algorithm</p>
+<h3 id="单向加密"><a href="#单向加密" class="headerlink" title="单向加密"></a>单向加密</h3><p>即提出数据指纹，只能加密，不能解密。</p>
+<h4 id="单向加密的特性"><a href="#单向加密的特性" class="headerlink" title="单向加密的特性"></a>单向加密的特性</h4><p>定长输出、雪崩效应。</p>
+<h4 id="单向加密的功能"><a href="#单向加密的功能" class="headerlink" title="单向加密的功能"></a>单向加密的功能</h4><p>验证数据的完整性。</p>
+<h4 id="单向加密的算法"><a href="#单向加密的算法" class="headerlink" title="单向加密的算法"></a>单向加密的算法</h4><ul>
+<li>md5: Message Digest 5, 128bits</li>
+<li>sha1: Secure Hash Algorithm 1, 160bits</li>
+<li>sha224</li>
+<li>sha256</li>
+<li>sha384</li>
+<li>sha512</li>
+</ul>
+<h3 id="密钥交换"><a href="#密钥交换" class="headerlink" title="密钥交换"></a>密钥交换</h3><p>IKE（Internet Key Exchange）</p>
+<h4 id="密钥交换的类型"><a href="#密钥交换的类型" class="headerlink" title="密钥交换的类型"></a>密钥交换的类型</h4><ul>
+<li>公钥加密</li>
+<li>DH（迪菲-赫尔曼</li>
+<li>ECDH（椭圆曲线 DH）</li>
+<li>ECDHE（临时椭圆曲线 DH）</li>
+</ul>
+<h2 id="openSSL-的组成"><a href="#openSSL-的组成" class="headerlink" title="openSSL 的组成"></a>openSSL 的组成</h2><ul>
+<li>libencrypto 库</li>
+<li>libssl 库</li>
+<li>openssl 多用途命令行工具</li>
+</ul>
+<h2 id="SSL-会话主要步骤"><a href="#SSL-会话主要步骤" class="headerlink" title="SSL 会话主要步骤"></a>SSL 会话主要步骤</h2><ul>
+<li>客户端向服务器端索要并验正证书</li>
+<li>双方协商生成“会话密钥”</li>
+<li>双方采用“会话密钥”进行加密通信</li>
+</ul>
+<h2 id="PKI"><a href="#PKI" class="headerlink" title="PKI"></a>PKI</h2><p>公钥基础设施，Public Key Infrastructure。</p>
+<h3 id="PKI-的组成"><a href="#PKI-的组成" class="headerlink" title="PKI 的组成"></a>PKI 的组成</h3><ul>
+<li>签证机构: CA</li>
+<li>注册机构: RA</li>
+<li>证书吊销列表: CRL</li>
+<li>证书存取库</li>
+</ul>
+<h2 id="证书申请及签署步骤"><a href="#证书申请及签署步骤" class="headerlink" title="证书申请及签署步骤"></a>证书申请及签署步骤</h2><ol>
+<li>生成申请请求</li>
+<li>RA 核验</li>
+<li>CA 签署</li>
+<li>获取证书</li>
+</ol>
+<h2 id="建立私有-CA"><a href="#建立私有-CA" class="headerlink" title="建立私有 CA"></a>建立私有 CA</h2><p>配置文件: /etc/pki/tls/openssl.cnf</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>首先，需要构建私有 CA，在确定配置为 CA 的服务上生成一个自签证书，并为 CA 提供所需要的目录及文件即可。</p>
+<p>其次，要用到证书进行安全通信的服务器，需要向 CA 请求签署证书。</p>
+<h4 id="为-CA-提供所需的目录及文件"><a href="#为-CA-提供所需的目录及文件" class="headerlink" title="为 CA 提供所需的目录及文件"></a>为 CA 提供所需的目录及文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -pv /etc/pki/CA/&#123;certs,crl,newcerts&#125;</span><br><span class="line">touch /etc/pki/CA/&#123;serial,index.txt&#125;</span><br><span class="line"><span class="built_in">echo</span> 01 &gt; /etc/pki/CA/serial</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成私钥"><a href="#生成私钥" class="headerlink" title="生成私钥"></a>生成私钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(<span class="built_in">umask</span> 077;openssl genrsa -out /etc/pki/CA/private/cakey.pem 4096)</span><br></pre></td></tr></table></figure>
+
+<h4 id="CA-生成自签证书"><a href="#CA-生成自签证书" class="headerlink" title="CA 生成自签证书"></a>CA 生成自签证书</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -new: 生成新证书签署请求</span></span><br><span class="line"><span class="comment"># -x509: 生成自签格式证书，专用于创建私有CA</span></span><br><span class="line"><span class="comment"># -key: 生成请求时用到的私有文件路径</span></span><br><span class="line"><span class="comment"># -days: 证书的有效期限，单位是day</span></span><br><span class="line"><span class="comment"># -out: 生成的请求文件路径，如果自签操作将直接生成签署过的证书</span></span><br><span class="line">openssl req -new -x509 -key /etc/pki/CA/private/cakey.pem -days 7300 -out /etc/pki/CA/cacert.pem</span><br></pre></td></tr></table></figure>
+
+<h4 id="发证"><a href="#发证" class="headerlink" title="发证"></a>发证</h4><p>步骤: （以 httpd 为例）</p>
+<ol>
+<li><p>用到证书的主机生成私钥</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir /etc/httpd/ssl</span><br><span class="line"><span class="built_in">cd</span> /etc/httpd/ssl</span><br><span class="line">(<span class="built_in">umask</span> 077;openssl genrsa -out /etc/httpd/ssl/httpd.key 2048)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成证书签署请求</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl req -new -key /etc/httpd/ssl/httpd.key -days 365 -out /etc/httpd/ssl/httpd.csr</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将请求通过可靠方式发送给 CA 主机</p>
+</li>
+<li><p>在 CA 主机上签署证书</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl ca -<span class="keyword">in</span> /tmp/httpd.csr -days 365 -out /etc/pki/CA/certs/httpd.crt</span><br></pre></td></tr></table></figure>
+
+<p>查看证书中的信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> /etc/pki/CA/certs/httpd.crt -noout -serial -subject -text</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CA 签署证书后，将证书发还给请求者</p>
+</li>
+</ol>
+<h4 id="吊销证书"><a href="#吊销证书" class="headerlink" title="吊销证书"></a>吊销证书</h4><p>步骤:</p>
+<ol>
+<li><p>客户端获取要吊销的证书的 serial（在使用证书的主机执行）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> /etc/pki/CA/certs/httpd.crt -noout -serial -subject</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CA 主机吊销证书</p>
+<p>先根据客户提交的 serial 和 subject 信息，对比其与本机数据库 index.txt 中存储的是否一致。</p>
+<p>吊销:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl ca -revoke /etc/pki/CA/newcerts/SERIAL.pem</span><br></pre></td></tr></table></figure>
+
+<p>其中的 SERIAL 要换成证书真正的序列号。</p>
+</li>
+<li><p>生成吊销证书的吊销编号（第一次吊销证书时执行）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> 01 &gt; /etc/pki/CA/crlnumber</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新证书吊销列表</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl ca -gencrl -out thisca.crl</span><br></pre></td></tr></table></figure>
+
+<p>查看 crl 文件:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl crl -<span class="keyword">in</span> /PATH/FROM/CRL_FILE.crl -noout -text</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="openssl-命令"><a href="#openssl-命令" class="headerlink" title="openssl 命令"></a>openssl 命令</h2><h3 id="enc"><a href="#enc" class="headerlink" title="enc"></a>enc</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl enc -e -des3 -a -salt -<span class="keyword">in</span> fstab -out fstab.ciphertext</span><br><span class="line">openssl enc -d -des3 -a -salt -out fstab -<span class="keyword">in</span> fstab.ciphertext</span><br></pre></td></tr></table></figure>
+
+<h3 id="dgst"><a href="#dgst" class="headerlink" title="dgst"></a>dgst</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl dgst -sha1 -out fstab.sha1 fstab</span><br></pre></td></tr></table></figure>
+
+<h3 id="passwd"><a href="#passwd" class="headerlink" title="passwd"></a>passwd</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl passwd -1 -salt roger.ink</span><br></pre></td></tr></table></figure>
+
+<h3 id="rand"><a href="#rand" class="headerlink" title="rand"></a>rand</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl rand -base64 <span class="variable">$num_of_char</span></span><br><span class="line">openssl rand -hex <span class="variable">$num_of_char</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="genrsa"><a href="#genrsa" class="headerlink" title="genrsa"></a>genrsa</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建私钥</span></span><br><span class="line">openssl genrsa -out rsakey.private 2048</span><br></pre></td></tr></table></figure>
+
+<h3 id="rsa"><a href="#rsa" class="headerlink" title="rsa"></a>rsa</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建公钥</span></span><br><span class="line">openssl rsa -<span class="keyword">in</span> rsakey.private -pubout -out rsakey.pub</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>openssl</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>grep的基本使用</title>
     <url>/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="/img/grep_title.jpg" alt="grep"></p>
@@ -264,6 +414,43 @@
       <tags>
         <tag>linux</tag>
         <tag>grep</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>交换capslock和control键位</title>
+    <url>/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/</url>
+    <content><![CDATA[<p><img src="/img/modify_keys_title.png" alt="modify_key"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>对于使用 vim 和 emacs 的朋友来说，交换 capslock 和 control 的键位对于自己的习惯来说是至关重要的。那么如何设置才能交换呢，对于不同的操作系统有不同的方法。</p>
+<a id="more"></a>
+
+<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><p>在 windows 系统中，最简便的方式是使用 KeyTweak 这款软件。</p>
+<p><img src="/img/windows_modify_keys.png" alt="KeyTweak"></p>
+<p>另外有些笔记本自带有一些键位设置的软件。比如微星的 MSI PER KEY RGB KEYBOARD 软件就可以在系统级别进行设置。</p>
+<h2 id="macos"><a href="#macos" class="headerlink" title="macos"></a>macos</h2><p>在 macos 系统中，进入系统设置，键盘，修改键位就可以了。</p>
+<p><img src="/img/macos_modify_keys.png" alt="macos"></p>
+<p>另外推荐一款修改键位的神器，<a href="https://karabiner-elements.pqrs.org/">Karabiner-Elements</a>，喜欢修改键位的朋友不要错过。</p>
+<h2 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h2><p>在 ubuntu 系统中，修改/etc/default/keyboard 文件，设置 XKBOPTIONS=”ctrl:nocaps”即可。</p>
+<p><img src="/img/ubuntu_modify_keys.png" alt="ubuntu"></p>
+<h2 id="centos"><a href="#centos" class="headerlink" title="centos"></a>centos</h2><p>在 centos 系统中，新建 swap_ctrl_capslock.kmap 文件，在文件中写入如下代码:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keymaps 0-127</span><br><span class="line">keycode 58=Control</span><br></pre></td></tr></table></figure>
+
+<p>然后在命令行中执行:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo loadkeys swap_ctrl_capslock.kmap</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/centos_modify_keys.png" alt="centos"></p>
+<p>如需每次开机自动生效，可以将该指令写入~/.bashrc 文件中。</p>
+<p>由于该指令需要 root 权限，如果不是以 root 用户身份登陆，需要在/etc/sudoer 中写入 NOPASSWD 以免输入密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$username</span> ALL=(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>keyboard</tag>
+        <tag>windows</tag>
+        <tag>macos</tag>
+        <tag>ubuntu</tag>
+        <tag>centos</tag>
       </tags>
   </entry>
   <entry>
@@ -410,43 +597,6 @@
       </tags>
   </entry>
   <entry>
-    <title>交换capslock和control键位</title>
-    <url>/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/</url>
-    <content><![CDATA[<p><img src="/img/modify_keys_title.png" alt="modify_key"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>对于使用 vim 和 emacs 的朋友来说，交换 capslock 和 control 的键位对于自己的习惯来说是至关重要的。那么如何设置才能交换呢，对于不同的操作系统有不同的方法。</p>
-<a id="more"></a>
-
-<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><p>在 windows 系统中，最简便的方式是使用 KeyTweak 这款软件。</p>
-<p><img src="/img/windows_modify_keys.png" alt="KeyTweak"></p>
-<p>另外有些笔记本自带有一些键位设置的软件。比如微星的 MSI PER KEY RGB KEYBOARD 软件就可以在系统级别进行设置。</p>
-<h2 id="macos"><a href="#macos" class="headerlink" title="macos"></a>macos</h2><p>在 macos 系统中，进入系统设置，键盘，修改键位就可以了。</p>
-<p><img src="/img/macos_modify_keys.png" alt="macos"></p>
-<p>另外推荐一款修改键位的神器，<a href="https://karabiner-elements.pqrs.org/">Karabiner-Elements</a>，喜欢修改键位的朋友不要错过。</p>
-<h2 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h2><p>在 ubuntu 系统中，修改/etc/default/keyboard 文件，设置 XKBOPTIONS=”ctrl:nocaps”即可。</p>
-<p><img src="/img/ubuntu_modify_keys.png" alt="ubuntu"></p>
-<h2 id="centos"><a href="#centos" class="headerlink" title="centos"></a>centos</h2><p>在 centos 系统中，新建 swap_ctrl_capslock.kmap 文件，在文件中写入如下代码:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keymaps 0-127</span><br><span class="line">keycode 58=Control</span><br></pre></td></tr></table></figure>
-
-<p>然后在命令行中执行:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo loadkeys swap_ctrl_capslock.kmap</span><br></pre></td></tr></table></figure>
-
-<p><img src="/img/centos_modify_keys.png" alt="centos"></p>
-<p>如需每次开机自动生效，可以将该指令写入~/.bashrc 文件中。</p>
-<p>由于该指令需要 root 权限，如果不是以 root 用户身份登陆，需要在/etc/sudoer 中写入 NOPASSWD 以免输入密码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$username</span> ALL=(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>keyboard</tag>
-        <tag>windows</tag>
-        <tag>macos</tag>
-        <tag>ubuntu</tag>
-        <tag>centos</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用live server实时查看容器中的开发效果</title>
     <url>/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/</url>
     <content><![CDATA[<p><img src="/img/live_server_title.png" alt="live server"></p>
@@ -489,6 +639,379 @@
       </categories>
       <tags>
         <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>openssh的基本应用</title>
+    <url>/2020/11/05/openssh%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<p><img src="/img/openssh_title.png" alt="openssl"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>OpenSSH 是 SSH （Secure SHell） 协议的免费开源实现。SSH 协议族可以用来进行远程控制， 或在计算机之间传送文件。而实现此功能的传统方式，如 telnet(终端仿真协议)、 rcp ftp、 rlogin、rsh 都是极为不安全的，并且会使用明文传送密码。OpenSSH 提供了服务端后台程序和客户端工具，用来加密远程控制和文件传输过程中的数据，并由此来代替原来的类似服务。</p>
+<p>OpenSSH 是使用 SSH 透过计算机网络加密通讯的实现。它是取代由 SSH Communications Security 所提供的商用版本的开放源代码方案。目前 OpenSSH 是 OpenBSD 的子计划。</p>
+<p>OpenSSH 常常被误认以为与 OpenSSL 有关联，但实际上这两个计划的有不同的目的，不同的发展团队，名称相近只是因为两者有同样的软件发展目标 ── 提供开放源代码的加密通讯软件。</p>
+<a id="more"></a>
+
+<h2 id="sshd-config-的说明"><a href="#sshd-config-的说明" class="headerlink" title="sshd_config 的说明"></a>sshd_config 的说明</h2><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Protocol</td>
+<td>2</td>
+<td>新版本在默认情况下，使用的是 protocol 2。如果旧版本默认情况下使用的是 protocol 1，需要在配置文件中加入 Protocol 2。</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>22</td>
+<td>监听的端口号。</td>
+</tr>
+<tr>
+<td>AddressFamily</td>
+<td>any</td>
+<td>地址族 “any”(默认)、”inet”(仅 IPv4)、”inet6”(仅 IPv6)。</td>
+</tr>
+<tr>
+<td>ListenAddress</td>
+<td>0.0.0.0</td>
+<td>IPv4 监听所有地址。</td>
+</tr>
+<tr>
+<td>ListenAddress</td>
+<td>::</td>
+<td>IPv6 监听所有地址。</td>
+</tr>
+<tr>
+<td>HostKey</td>
+<td>/etc/ssh/ssh_host_rsa_key</td>
+<td>主机私钥文件的位置。</td>
+</tr>
+<tr>
+<td>HostKey</td>
+<td>/etc/ssh/ssh_host_ecdsa_key</td>
+<td>主机私钥文件的位置。</td>
+</tr>
+<tr>
+<td>HostKey</td>
+<td>/etc/ssh/ssh_host_ed25519_key</td>
+<td>主机私钥文件的位置。</td>
+</tr>
+<tr>
+<td>RekeyLimit</td>
+<td>default none</td>
+<td></td>
+</tr>
+<tr>
+<td>SyslogFacility</td>
+<td>AUTH</td>
+<td>日志消息通过哪个日志子系统(facility)发送，有效值有 DAEMON, USER, AUTH(默认), LOCAL0, LOCAL1, LOCAL2, LOCAL3, LOCAL4, LOCAL5, LOCAL6, LOCAL7。在 centos 中，记录在/var/log/secure，在 ubuntu 中，记录在/var/log/auth.log。</td>
+</tr>
+<tr>
+<td>LogLevel</td>
+<td>INFO</td>
+<td>日志等级，有效值有 QUIET, FATAL, ERROR, INFO(默认), VERBOSE, DEBUG, DEBUG1, DEBUG2, DEBUG3。</td>
+</tr>
+<tr>
+<td>LoginGraceTime</td>
+<td>2m</td>
+<td>限制用户必须在指定的时限内认证成功，0 表示无限制。默认值是 120 秒。</td>
+</tr>
+<tr>
+<td>PermitRootLogin</td>
+<td>prohibit-password</td>
+<td>是否允许 root 登录。可用值如下:”yes”(默认) 表示允许。”no”表示禁止。”prohibit-password”表示允许 root 登陆，但禁止其使用密码认证登录。</td>
+</tr>
+<tr>
+<td>StrictModes</td>
+<td>yes</td>
+<td>严格检查模式，在接受连接请求前对用户主目录和相关的配置文件进行宿主和权限检查。</td>
+</tr>
+<tr>
+<td>MaxAuthTries</td>
+<td>6</td>
+<td>每个连接最大允许的认证次数，比如输入密码错误次数。</td>
+</tr>
+<tr>
+<td>MaxSessions</td>
+<td>10</td>
+<td>每个连接可以并行开启多少个会话。</td>
+</tr>
+<tr>
+<td>PubkeyAuthentication</td>
+<td>yes</td>
+<td>是否允许公钥认证。</td>
+</tr>
+<tr>
+<td>AuthorizedKeysFile</td>
+<td>.ssh/authorized_keys .ssh/authorized_keys2</td>
+<td>存放该用户可以用来登录的公钥位置。</td>
+</tr>
+<tr>
+<td>AuthorizedPrincipalsFile</td>
+<td>none</td>
+<td></td>
+</tr>
+<tr>
+<td>AuthorizedKeysCommand</td>
+<td>none</td>
+<td></td>
+</tr>
+<tr>
+<td>AuthorizedKeysCommandUser</td>
+<td>nobody</td>
+<td></td>
+</tr>
+<tr>
+<td>HostbasedAuthentication</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>IgnoreUserKnownHosts</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>IgnoreRhosts</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>PasswordAuthentication</td>
+<td>yes</td>
+<td>是否允许使用基于密码的认证。默认为”yes”。</td>
+</tr>
+<tr>
+<td>PermitEmptyPasswords</td>
+<td>no</td>
+<td>是否允许密码为空的用户远程登录。默认为”no”。</td>
+</tr>
+<tr>
+<td>ChallengeResponseAuthentication</td>
+<td>no</td>
+<td>是否允许质疑-应答(challenge-response)认证。默认值是”yes”。一般关闭，不安全。</td>
+</tr>
+<tr>
+<td>KerberosAuthentication</td>
+<td>no</td>
+<td>是否要求用户为 PasswordAuthentication 提供的密码必须通过 Kerberos KDC 认证，也就是是否使用 Kerberos 认证。大规模统一认证的时候使用。</td>
+</tr>
+<tr>
+<td>KerberosOrLocalPasswd</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>KerberosTicketCleanup</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>KerberosGetAFSToken</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>GSSAPIAuthentication</td>
+<td>no</td>
+<td>是否允许使用基于 GSSAPI 的用户认证。默认值为”no”。</td>
+</tr>
+<tr>
+<td>GSSAPICleanupCredentials</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>GSSAPIStrictAcceptorCheck</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>GSSAPIKeyExchange</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>UsePAM</td>
+<td>yes</td>
+<td>是否启用 PAM 认证。</td>
+</tr>
+<tr>
+<td>AllowAgentForwarding</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>AllowTcpForwarding</td>
+<td>yes</td>
+<td>是否允许 TCP 转发，默认值为”yes”。</td>
+</tr>
+<tr>
+<td>GatewayPorts</td>
+<td>no</td>
+<td>是否允许远程主机连接本地的转发端口。默认值是”no”。</td>
+</tr>
+<tr>
+<td>X11Forwarding</td>
+<td>yes</td>
+<td>是否允许进行 X11 转发。默认值是”no”，设为”yes”表示允许。需要在客户端连接时加入-X 选项。</td>
+</tr>
+<tr>
+<td>X11DisplayOffset</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>X11UseLocalhost</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>PermitTTY</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>PrintMotd</td>
+<td>no</td>
+<td>是否在每一次交互式登录时打印/etc/motd 文件的内容。默认值是”yes”。</td>
+</tr>
+<tr>
+<td>PrintLastLog</td>
+<td>yes</td>
+<td>是否在每一次交互式登录时打印最后一位用户的登录时间。默认值是”yes”。</td>
+</tr>
+<tr>
+<td>TCPKeepAlive</td>
+<td>yes</td>
+<td>系统是否向客户端发送 TCP keepalive 消息。默认值是”yes”。</td>
+</tr>
+<tr>
+<td>PermitUserEnvironment</td>
+<td>no</td>
+<td>是否允许处理<del>/.ssh/environment 以及</del>/.ssh/authorized_keys 中的 environment=选项。默认值是”no”。如果设为”yes”可能会导致用户有机会使用某些机制(比如 LD_PRELOAD)绕过访问控制，造成安全漏洞。</td>
+</tr>
+<tr>
+<td>Compression</td>
+<td>delayed</td>
+<td>是否对通信数据进行加密，还是延迟到认证成功之后再对通信数据加密。可用值:”yes”, “delayed”(默认), “no”。</td>
+</tr>
+<tr>
+<td>ClientAliveInterval</td>
+<td>0</td>
+<td>设置一个以秒记的时长，如果超过这么长时间没有收到客户端的任何数据，将通过安全通道向客户端发送一个”alive”消息，并等候应答。默认值为 0，表示不发送”alive”消息。</td>
+</tr>
+<tr>
+<td>ClientAliveCountMax</td>
+<td>3</td>
+<td>在未收到任何客户端回应前最多允许发送多少个”alive”消息。默认值是 3。到达这个上限后，将强制断开连接、关闭会话。</td>
+</tr>
+<tr>
+<td>UseDNS</td>
+<td>no</td>
+<td>是否应该对远程主机名进行反向解析，以检查此主机名是否与其 IP 地址真实对应。默认值为”yes”。</td>
+</tr>
+<tr>
+<td>PidFile</td>
+<td>/var/run/sshd.pid</td>
+<td>在哪个文件中存放 SSH 守护进程的进程号，默认为/var/run/sshd.pid 文件。</td>
+</tr>
+<tr>
+<td>MaxStartups</td>
+<td>10:30:100</td>
+<td>10:当连接数达到 10 时就开始拒绝连接，不过不是全部拒绝。30:当连接数到达 10 时，之后的连接有 30 的概率被拒绝掉。100:当连接数达到 100 时，之后的连接就全部拒绝了。可以直接设置为 10，达到 10 后就不能连接了。</td>
+</tr>
+<tr>
+<td>PermitTunnel</td>
+<td>no</td>
+<td>是否允许 tun(4)设备转发。可用值为:”yes”, “point-to-point”(layer 3), “ethernet”(layer 2), “no”(默认)。”yes”同时蕴含着”point-to-point”和”ethernet”。</td>
+</tr>
+<tr>
+<td>ChrootDirectory</td>
+<td>none</td>
+<td></td>
+</tr>
+<tr>
+<td>VersionAddendum</td>
+<td>none</td>
+<td></td>
+</tr>
+<tr>
+<td>Banner</td>
+<td>none</td>
+<td>将指定的文件中的内容在用户进行认证前显示给远程用户。</td>
+</tr>
+<tr>
+<td>AcceptEnv</td>
+<td>LANG LC_*</td>
+<td>指定客户端发送的哪些环境变量将会被传递到会话环境中。</td>
+</tr>
+<tr>
+<td>Subsystem</td>
+<td>sftp /usr/lib/openssh/sftp-server</td>
+<td>配置一个外部子系统(例如，一个文件传输守护进程)。值是一个子系统的名字和对应的命令行(含选项和参数)。比如”sftp /usr/lib/openssh/sftp-server”。</td>
+</tr>
+<tr>
+<td>AllowUsers</td>
+<td></td>
+<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么将仅允许这些用户登录，而拒绝其它所有用户。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。例如:AllowUsers <a href="mailto:&#97;&#100;&#109;&#105;&#110;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#56;&#x2e;&#48;&#x2e;&#x31;">&#97;&#100;&#109;&#105;&#110;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#56;&#x2e;&#48;&#x2e;&#x31;</a>。指定多用户用空格:AllowUsers <a href="mailto:&#x61;&#100;&#109;&#x69;&#x6e;&#x40;&#x31;&#57;&#x32;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x30;&#46;&#x31;">&#x61;&#100;&#109;&#x69;&#x6e;&#x40;&#x31;&#57;&#x32;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x30;&#46;&#x31;</a> user1</td>
+</tr>
+<tr>
+<td>AllowGroups</td>
+<td></td>
+<td>这个指令后面跟着一串用空格分隔的组名列表(其中可以使用”*“和”?”通配符)。默认允许所有组登录。如果使用了这个指令，那么将仅允许这些组中的成员登录，而拒绝其它所有组。这里的”组”是指”主组”(primary group)，也就是/etc/passwd 文件中指定的组。</td>
+</tr>
+<tr>
+<td>DenyUsers</td>
+<td></td>
+<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么这些用户将被拒绝登录。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。</td>
+</tr>
+<tr>
+<td>DenyGroups</td>
+<td></td>
+<td>这个指令后面跟着一串用空格分隔的组名列表(其中可以使用”*“和”?”通配符)。默认允许所有组登录。如果使用了这个指令，那么这些组中的成员将被拒绝登录。这里的”组”是指”主组”(primary group)，也就是/etc/passwd 文件中指定的组。</td>
+</tr>
+<tr>
+<td>Match</td>
+<td>User anoncvs</td>
+<td>引入一个条件块。块的结尾标志是另一个 Match 指令或者文件结尾。如果 Match 行上指定的条件都满足，那么随后的指令将覆盖全局配置中的指令。Match 的值是一个或多个”条件-模式”对。可用的”条件”是:User,Group,Host,Address。</td>
+</tr>
+</tbody></table>
+<h2 id="ssh-服务的最佳实践"><a href="#ssh-服务的最佳实践" class="headerlink" title="ssh 服务的最佳实践"></a>ssh 服务的最佳实践</h2><ul>
+<li>不要使用默认端口</li>
+<li>禁止使用 protocol version 1</li>
+<li>限制可登录的用户</li>
+<li>设定空闲会话超时时长</li>
+<li>利用防火墙设置 ssh 访问策略</li>
+<li>仅监听特定的 IP 地址</li>
+<li>基于口令认证时，使用强密码策略<ul>
+<li>tr -dc A-Za-z0-9_ &lt; /dev/urandom | head -c 30 | xargs</li>
+</ul>
+</li>
+<li>使用基于密钥的认证</li>
+<li>禁止使用空密码</li>
+<li>禁止 root 用户直接登录</li>
+<li>限制 ssh 的访问频度和并发在线数</li>
+</ul>
+<h2 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -p port: 远程服务器监听的端口</span></span><br><span class="line"><span class="comment"># -X: 支持x11转发</span></span><br><span class="line"><span class="comment"># -Y: 支持信任的x11转发</span></span><br><span class="line">ssh <span class="variable">$username</span>@<span class="variable">$host</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh-keygen"><a href="#ssh-keygen" class="headerlink" title="ssh-keygen"></a>ssh-keygen</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh-copy-id"><a href="#ssh-copy-id" class="headerlink" title="ssh-copy-id"></a>ssh-copy-id</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-copy-id <span class="variable">$username</span>@<span class="variable">$host</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -r: 递归复制</span></span><br><span class="line"><span class="comment"># -p: 保持源文件的属性信息</span></span><br><span class="line"><span class="comment"># -q: 静默模式</span></span><br><span class="line"><span class="comment"># -P: host监听的端口</span></span><br><span class="line">scp <span class="variable">$username</span>@<span class="variable">$host</span>:<span class="variable">$path_to_file</span> <span class="variable">$path_to_file</span></span><br><span class="line">scp <span class="variable">$path_to_file</span> <span class="variable">$username</span>@<span class="variable">$host</span>:<span class="variable">$path_to_file</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>openssl</tag>
+        <tag>openssh</tag>
       </tags>
   </entry>
 </search>

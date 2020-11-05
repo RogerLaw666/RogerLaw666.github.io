@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.roger.ink","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="概述在计算机网络上，OpenSSL 是一个开放源代码的软件库包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。 SSL 是 Secure Sockets Layer（安全套接层协议）的缩写，可以在 Internet 上提供秘密性传输。Netscape 公司在推出第一个 Web 浏览器的同时，提出了 SSL 协议标准。其目标是保">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openssl的基本应用">
+<meta property="og:url" content="https://www.roger.ink/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="roger的小酒馆">
+<meta property="og:description" content="概述在计算机网络上，OpenSSL 是一个开放源代码的软件库包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。 SSL 是 Secure Sockets Layer（安全套接层协议）的缩写，可以在 Internet 上提供秘密性传输。Netscape 公司在推出第一个 Web 浏览器的同时，提出了 SSL 协议标准。其目标是保">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.roger.ink/img/openssl_title.png">
+<meta property="article:published_time" content="2020-11-05T14:49:48.000Z">
+<meta property="article:modified_time" content="2020-11-05T15:08:54.231Z">
+<meta property="article:author" content="roger">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="openssl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.roger.ink/img/openssl_title.png">
+
+<link rel="canonical" href="https://www.roger.ink/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>openssl的基本应用 | roger的小酒馆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="roger的小酒馆" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <a target="_blank" rel="noopener" href="https://github.com/RogerLaw666" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">roger的小酒馆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不要回头，一直向前！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="roger">
+      <meta itemprop="description" content="roger的技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="roger的小酒馆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          openssl的基本应用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-05 22:49:48 / 修改时间：23:08:54" itemprop="dateCreated datePublished" datetime="2020-11-05T22:49:48+08:00">2020-11-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          
+
+            <span>｜</span>
+            <span class="post-meta-item-text">本文字数：</span>
+            <span title="post.wordcount">
+                1.5k
+            </span>
+            <span>字</span>
+            <span>｜</span>
+            <span class="post-meta-item-text">阅读时长：</span>
+            <span title="post.min2read">
+                5
+            </span>
+            <span>分钟</span>
+            <span>｜</span>
+
+            <span id="/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="openssl的基本应用" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          <span>次</span>
+          <span>｜</span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="/img/openssl_title.png" alt="openssl"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在计算机网络上，OpenSSL 是一个开放源代码的软件库包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。</p>
+<p>SSL 是 Secure Sockets Layer（安全套接层协议）的缩写，可以在 Internet 上提供秘密性传输。Netscape 公司在推出第一个 Web 浏览器的同时，提出了 SSL 协议标准。其目标是保证两个应用间通信的保密性和可靠性,可在服务器端和用户端同时实现支持。已经成为 Internet 上保密通讯的工业标准。</p>
+<p>SSL 能使用户/服务器应用之间的通信不被攻击者窃听，并且始终对服务器进行认证，还可选择对用户进行认证。SSL 协议要求建立在可靠的传输层协议(TCP)之上。SSL 协议的优势在于它是与应用层协议独立无关的，高层的应用层协议(例如：HTTP，FTP，TELNET 等)能透明地建立于 SSL 协议之上。SSL 协议在应用层协议通信之前就已经完成加密算法、通信密钥的协商及服务器认证工作。在此之后应用层协议所传送的数据都会被加密，从而保证通信的私密性。</p>
+<a id="more"></a>
+
+<h2 id="加密算法和协议"><a href="#加密算法和协议" class="headerlink" title="加密算法和协议"></a>加密算法和协议</h2><h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p>加密和解密使用同一个密钥。</p>
+<h4 id="对称加密的类型"><a href="#对称加密的类型" class="headerlink" title="对称加密的类型"></a>对称加密的类型</h4><ul>
+<li>DES: Data Encryption Standard</li>
+<li>3DES: Triple DES</li>
+<li>AES: Advanced Encryption Standard(128bits, 192bits, 256bits, 384bits)</li>
+<li>Blowfish</li>
+<li>Twofish</li>
+<li>IDEA</li>
+<li>RC6</li>
+<li>CAST5</li>
+</ul>
+<h4 id="对称加密的特性"><a href="#对称加密的特性" class="headerlink" title="对称加密的特性"></a>对称加密的特性</h4><ul>
+<li>加密、解密使用同一个密钥</li>
+<li>将原始数据分割成为固定大小的块，逐个进行加密</li>
+</ul>
+<h4 id="对称加密的缺陷"><a href="#对称加密的缺陷" class="headerlink" title="对称加密的缺陷"></a>对称加密的缺陷</h4><ul>
+<li>密钥过多</li>
+<li>密钥分发困难</li>
+</ul>
+<h3 id="公钥加密"><a href="#公钥加密" class="headerlink" title="公钥加密"></a>公钥加密</h3><p>密钥分为公钥与私钥。</p>
+<h4 id="公钥加密的公钥"><a href="#公钥加密的公钥" class="headerlink" title="公钥加密的公钥"></a>公钥加密的公钥</h4><p>从私钥中提取产生，可公开给所有人，也叫 pubkey。</p>
+<h4 id="公钥加密的私钥"><a href="#公钥加密的私钥" class="headerlink" title="公钥加密的私钥"></a>公钥加密的私钥</h4><p>通过工具创建，使用者自己留存，必须保证其私密性，也叫 secret key。</p>
+<h4 id="公钥加密的特性"><a href="#公钥加密的特性" class="headerlink" title="公钥加密的特性"></a>公钥加密的特性</h4><p>用公钥加密的数据，只能使用与之配对儿的私钥解密，反之亦然。</p>
+<h4 id="公钥加密的用途"><a href="#公钥加密的用途" class="headerlink" title="公钥加密的用途"></a>公钥加密的用途</h4><ul>
+<li>数字签名: 主要在于让接收方确认发送方的身份</li>
+<li>密钥交换: 发送方用对方公钥加密一个对称密钥，并发送给对方</li>
+<li>数据加密</li>
+</ul>
+<h4 id="公钥加密的算法"><a href="#公钥加密的算法" class="headerlink" title="公钥加密的算法"></a>公钥加密的算法</h4><p>RSA，DSA，ELGamal<br>DSS: Digital Signature Standard<br>DSA: Digital Signature Algorithm</p>
+<h3 id="单向加密"><a href="#单向加密" class="headerlink" title="单向加密"></a>单向加密</h3><p>即提出数据指纹，只能加密，不能解密。</p>
+<h4 id="单向加密的特性"><a href="#单向加密的特性" class="headerlink" title="单向加密的特性"></a>单向加密的特性</h4><p>定长输出、雪崩效应。</p>
+<h4 id="单向加密的功能"><a href="#单向加密的功能" class="headerlink" title="单向加密的功能"></a>单向加密的功能</h4><p>验证数据的完整性。</p>
+<h4 id="单向加密的算法"><a href="#单向加密的算法" class="headerlink" title="单向加密的算法"></a>单向加密的算法</h4><ul>
+<li>md5: Message Digest 5, 128bits</li>
+<li>sha1: Secure Hash Algorithm 1, 160bits</li>
+<li>sha224</li>
+<li>sha256</li>
+<li>sha384</li>
+<li>sha512</li>
+</ul>
+<h3 id="密钥交换"><a href="#密钥交换" class="headerlink" title="密钥交换"></a>密钥交换</h3><p>IKE（Internet Key Exchange）</p>
+<h4 id="密钥交换的类型"><a href="#密钥交换的类型" class="headerlink" title="密钥交换的类型"></a>密钥交换的类型</h4><ul>
+<li>公钥加密</li>
+<li>DH（迪菲-赫尔曼</li>
+<li>ECDH（椭圆曲线 DH）</li>
+<li>ECDHE（临时椭圆曲线 DH）</li>
+</ul>
+<h2 id="openSSL-的组成"><a href="#openSSL-的组成" class="headerlink" title="openSSL 的组成"></a>openSSL 的组成</h2><ul>
+<li>libencrypto 库</li>
+<li>libssl 库</li>
+<li>openssl 多用途命令行工具</li>
+</ul>
+<h2 id="SSL-会话主要步骤"><a href="#SSL-会话主要步骤" class="headerlink" title="SSL 会话主要步骤"></a>SSL 会话主要步骤</h2><ul>
+<li>客户端向服务器端索要并验正证书</li>
+<li>双方协商生成“会话密钥”</li>
+<li>双方采用“会话密钥”进行加密通信</li>
+</ul>
+<h2 id="PKI"><a href="#PKI" class="headerlink" title="PKI"></a>PKI</h2><p>公钥基础设施，Public Key Infrastructure。</p>
+<h3 id="PKI-的组成"><a href="#PKI-的组成" class="headerlink" title="PKI 的组成"></a>PKI 的组成</h3><ul>
+<li>签证机构: CA</li>
+<li>注册机构: RA</li>
+<li>证书吊销列表: CRL</li>
+<li>证书存取库</li>
+</ul>
+<h2 id="证书申请及签署步骤"><a href="#证书申请及签署步骤" class="headerlink" title="证书申请及签署步骤"></a>证书申请及签署步骤</h2><ol>
+<li>生成申请请求</li>
+<li>RA 核验</li>
+<li>CA 签署</li>
+<li>获取证书</li>
+</ol>
+<h2 id="建立私有-CA"><a href="#建立私有-CA" class="headerlink" title="建立私有 CA"></a>建立私有 CA</h2><p>配置文件: /etc/pki/tls/openssl.cnf</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>首先，需要构建私有 CA，在确定配置为 CA 的服务上生成一个自签证书，并为 CA 提供所需要的目录及文件即可。</p>
+<p>其次，要用到证书进行安全通信的服务器，需要向 CA 请求签署证书。</p>
+<h4 id="为-CA-提供所需的目录及文件"><a href="#为-CA-提供所需的目录及文件" class="headerlink" title="为 CA 提供所需的目录及文件"></a>为 CA 提供所需的目录及文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -pv /etc/pki/CA/&#123;certs,crl,newcerts&#125;</span><br><span class="line">touch /etc/pki/CA/&#123;serial,index.txt&#125;</span><br><span class="line"><span class="built_in">echo</span> 01 &gt; /etc/pki/CA/serial</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成私钥"><a href="#生成私钥" class="headerlink" title="生成私钥"></a>生成私钥</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">umask</span> 077;openssl genrsa -out /etc/pki/CA/private/cakey.pem 4096)</span><br></pre></td></tr></table></figure>
+
+<h4 id="CA-生成自签证书"><a href="#CA-生成自签证书" class="headerlink" title="CA 生成自签证书"></a>CA 生成自签证书</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -new: 生成新证书签署请求</span></span><br><span class="line"><span class="comment"># -x509: 生成自签格式证书，专用于创建私有CA</span></span><br><span class="line"><span class="comment"># -key: 生成请求时用到的私有文件路径</span></span><br><span class="line"><span class="comment"># -days: 证书的有效期限，单位是day</span></span><br><span class="line"><span class="comment"># -out: 生成的请求文件路径，如果自签操作将直接生成签署过的证书</span></span><br><span class="line">openssl req -new -x509 -key /etc/pki/CA/private/cakey.pem -days 7300 -out /etc/pki/CA/cacert.pem</span><br></pre></td></tr></table></figure>
+
+<h4 id="发证"><a href="#发证" class="headerlink" title="发证"></a>发证</h4><p>步骤: （以 httpd 为例）</p>
+<ol>
+<li><p>用到证书的主机生成私钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/httpd/ssl</span><br><span class="line"><span class="built_in">cd</span> /etc/httpd/ssl</span><br><span class="line">(<span class="built_in">umask</span> 077;openssl genrsa -out /etc/httpd/ssl/httpd.key 2048)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成证书签署请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -key /etc/httpd/ssl/httpd.key -days 365 -out /etc/httpd/ssl/httpd.csr</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将请求通过可靠方式发送给 CA 主机</p>
+</li>
+<li><p>在 CA 主机上签署证书</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl ca -<span class="keyword">in</span> /tmp/httpd.csr -days 365 -out /etc/pki/CA/certs/httpd.crt</span><br></pre></td></tr></table></figure>
+
+<p>查看证书中的信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> /etc/pki/CA/certs/httpd.crt -noout -serial -subject -text</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CA 签署证书后，将证书发还给请求者</p>
+</li>
+</ol>
+<h4 id="吊销证书"><a href="#吊销证书" class="headerlink" title="吊销证书"></a>吊销证书</h4><p>步骤:</p>
+<ol>
+<li><p>客户端获取要吊销的证书的 serial（在使用证书的主机执行）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> /etc/pki/CA/certs/httpd.crt -noout -serial -subject</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CA 主机吊销证书</p>
+<p>先根据客户提交的 serial 和 subject 信息，对比其与本机数据库 index.txt 中存储的是否一致。</p>
+<p>吊销:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl ca -revoke /etc/pki/CA/newcerts/SERIAL.pem</span><br></pre></td></tr></table></figure>
+
+<p>其中的 SERIAL 要换成证书真正的序列号。</p>
+</li>
+<li><p>生成吊销证书的吊销编号（第一次吊销证书时执行）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 01 &gt; /etc/pki/CA/crlnumber</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新证书吊销列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl ca -gencrl -out thisca.crl</span><br></pre></td></tr></table></figure>
+
+<p>查看 crl 文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl crl -<span class="keyword">in</span> /PATH/FROM/CRL_FILE.crl -noout -text</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="openssl-命令"><a href="#openssl-命令" class="headerlink" title="openssl 命令"></a>openssl 命令</h2><h3 id="enc"><a href="#enc" class="headerlink" title="enc"></a>enc</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl enc -e -des3 -a -salt -<span class="keyword">in</span> fstab -out fstab.ciphertext</span><br><span class="line">openssl enc -d -des3 -a -salt -out fstab -<span class="keyword">in</span> fstab.ciphertext</span><br></pre></td></tr></table></figure>
+
+<h3 id="dgst"><a href="#dgst" class="headerlink" title="dgst"></a>dgst</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl dgst -sha1 -out fstab.sha1 fstab</span><br></pre></td></tr></table></figure>
+
+<h3 id="passwd"><a href="#passwd" class="headerlink" title="passwd"></a>passwd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl passwd -1 -salt roger.ink</span><br></pre></td></tr></table></figure>
+
+<h3 id="rand"><a href="#rand" class="headerlink" title="rand"></a>rand</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl rand -base64 <span class="variable">$num_of_char</span></span><br><span class="line">openssl rand -hex <span class="variable">$num_of_char</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="genrsa"><a href="#genrsa" class="headerlink" title="genrsa"></a>genrsa</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建私钥</span></span><br><span class="line">openssl genrsa -out rsakey.private 2048</span><br></pre></td></tr></table></figure>
+
+<h3 id="rsa"><a href="#rsa" class="headerlink" title="rsa"></a>rsa</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建公钥</span></span><br><span class="line">openssl rsa -<span class="keyword">in</span> rsakey.private -pubout -out rsakey.pub</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/openssl/" rel="tag"># openssl</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/" rel="prev" title="交换capslock和control键位">
+      <i class="fa fa-chevron-left"></i> 交换capslock和control键位
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/05/openssh%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/" rel="next" title="openssh的基本应用">
+      openssh的基本应用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%92%8C%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.</span> <span class="nav-text">加密算法和协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">2.1.</span> <span class="nav-text">对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.1.1.</span> <span class="nav-text">对称加密的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">2.1.2.</span> <span class="nav-text">对称加密的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="nav-number">2.1.3.</span> <span class="nav-text">对称加密的缺陷</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E9%92%A5%E5%8A%A0%E5%AF%86"><span class="nav-number">2.2.</span> <span class="nav-text">公钥加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AC%E9%92%A5%E5%8A%A0%E5%AF%86%E7%9A%84%E5%85%AC%E9%92%A5"><span class="nav-number">2.2.1.</span> <span class="nav-text">公钥加密的公钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AC%E9%92%A5%E5%8A%A0%E5%AF%86%E7%9A%84%E7%A7%81%E9%92%A5"><span class="nav-number">2.2.2.</span> <span class="nav-text">公钥加密的私钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AC%E9%92%A5%E5%8A%A0%E5%AF%86%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">2.2.3.</span> <span class="nav-text">公钥加密的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AC%E9%92%A5%E5%8A%A0%E5%AF%86%E7%9A%84%E7%94%A8%E9%80%94"><span class="nav-number">2.2.4.</span> <span class="nav-text">公钥加密的用途</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AC%E9%92%A5%E5%8A%A0%E5%AF%86%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.5.</span> <span class="nav-text">公钥加密的算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%90%91%E5%8A%A0%E5%AF%86"><span class="nav-number">2.3.</span> <span class="nav-text">单向加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%90%91%E5%8A%A0%E5%AF%86%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">2.3.1.</span> <span class="nav-text">单向加密的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%90%91%E5%8A%A0%E5%AF%86%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">2.3.2.</span> <span class="nav-text">单向加密的功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%90%91%E5%8A%A0%E5%AF%86%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-number">2.3.3.</span> <span class="nav-text">单向加密的算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2"><span class="nav-number">2.4.</span> <span class="nav-text">密钥交换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.4.1.</span> <span class="nav-text">密钥交换的类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openSSL-%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">3.</span> <span class="nav-text">openSSL 的组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL-%E4%BC%9A%E8%AF%9D%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.</span> <span class="nav-text">SSL 会话主要步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">5.</span> <span class="nav-text">PKI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PKI-%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">5.1.</span> <span class="nav-text">PKI 的组成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7%E5%8F%8A%E7%AD%BE%E7%BD%B2%E6%AD%A5%E9%AA%A4"><span class="nav-number">6.</span> <span class="nav-text">证书申请及签署步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89-CA"><span class="nav-number">7.</span> <span class="nav-text">建立私有 CA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">7.1.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA-CA-%E6%8F%90%E4%BE%9B%E6%89%80%E9%9C%80%E7%9A%84%E7%9B%AE%E5%BD%95%E5%8F%8A%E6%96%87%E4%BB%B6"><span class="nav-number">7.1.1.</span> <span class="nav-text">为 CA 提供所需的目录及文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E7%A7%81%E9%92%A5"><span class="nav-number">7.1.2.</span> <span class="nav-text">生成私钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CA-%E7%94%9F%E6%88%90%E8%87%AA%E7%AD%BE%E8%AF%81%E4%B9%A6"><span class="nav-number">7.1.3.</span> <span class="nav-text">CA 生成自签证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%91%E8%AF%81"><span class="nav-number">7.1.4.</span> <span class="nav-text">发证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8A%E9%94%80%E8%AF%81%E4%B9%A6"><span class="nav-number">7.1.5.</span> <span class="nav-text">吊销证书</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl-%E5%91%BD%E4%BB%A4"><span class="nav-number">8.</span> <span class="nav-text">openssl 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#enc"><span class="nav-number">8.1.</span> <span class="nav-text">enc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dgst"><span class="nav-number">8.2.</span> <span class="nav-text">dgst</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#passwd"><span class="nav-number">8.3.</span> <span class="nav-text">passwd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rand"><span class="nav-number">8.4.</span> <span class="nav-text">rand</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#genrsa"><span class="nav-number">8.5.</span> <span class="nav-text">genrsa</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rsa"><span class="nav-number">8.6.</span> <span class="nav-text">rsa</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="roger"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">roger</p>
+  <div class="site-description" itemprop="description">roger的技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rogerlaw666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rogerlaw666" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      推荐阅读
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.apple.com/swift/" title="https:&#x2F;&#x2F;developer.apple.com&#x2F;swift&#x2F;" rel="noopener" target="_blank">Swift 4</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.apple.com/documentation/objectivec" title="https:&#x2F;&#x2F;developer.apple.com&#x2F;documentation&#x2F;objectivec" rel="noopener" target="_blank">Objective-C</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://unity3d.com/learn/documentation" title="https:&#x2F;&#x2F;unity3d.com&#x2F;learn&#x2F;documentation" rel="noopener" target="_blank">Unity3D</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">roger</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+-->
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共8.7k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'TBmO7Jwa6jmNN407GiWI2eSj-gzGzoHsz',
+      appKey     : 'KJqEdJPgGEfO1TzLexeyCNoA',
+      placeholder: "来啊，互相伤害啊。。。",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
