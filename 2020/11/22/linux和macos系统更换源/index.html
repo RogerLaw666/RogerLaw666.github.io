@@ -19,26 +19,23 @@
     var CONFIG = {"hostname":"www.roger.ink","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="概述在 VSCode 的容器中，调试是比较麻烦的。主要是容器内外的端口需要映射，浏览器能正常连接后才能进行调试。根据调试的对象不同，方式也不尽相同。下面分别来进行说明。">
+  <meta name="description" content="概述在使用linux或者macos的过程中，如果通过系统自带的命令行工具去获取资源，在国内由于某些原因，获取的速度会很慢，这是需要换成国内的源，这样才能更好的安装和更新资源。 那么如何修改成国内的源呢，下面来细说一下。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用VSCode在容器中调试js">
-<meta property="og:url" content="https://www.roger.ink/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/index.html">
+<meta property="og:title" content="linux和macos系统更换源">
+<meta property="og:url" content="https://www.roger.ink/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/index.html">
 <meta property="og:site_name" content="roger的小酒馆">
-<meta property="og:description" content="概述在 VSCode 的容器中，调试是比较麻烦的。主要是容器内外的端口需要映射，浏览器能正常连接后才能进行调试。根据调试的对象不同，方式也不尽相同。下面分别来进行说明。">
+<meta property="og:description" content="概述在使用linux或者macos的过程中，如果通过系统自带的命令行工具去获取资源，在国内由于某些原因，获取的速度会很慢，这是需要换成国内的源，这样才能更好的安装和更新资源。 那么如何修改成国内的源呢，下面来细说一下。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.roger.ink/img/debug_js_title.png">
-<meta property="og:image" content="https://www.roger.ink/img/debug_nodejs_result.png">
-<meta property="og:image" content="https://www.roger.ink/img/live_server.png">
-<meta property="og:image" content="https://www.roger.ink/img/debug_for_chrome.png">
-<meta property="og:image" content="https://www.roger.ink/img/debug_js_result.png">
-<meta property="article:published_time" content="2020-11-03T07:30:26.000Z">
-<meta property="article:modified_time" content="2020-11-04T13:22:32.198Z">
+<meta property="og:image" content="https://www.roger.ink/img/linux_mac_replace_sources_title.jpg">
+<meta property="article:published_time" content="2020-11-22T03:46:04.000Z">
+<meta property="article:modified_time" content="2020-11-22T04:28:07.660Z">
 <meta property="article:author" content="roger">
-<meta property="article:tag" content="vscode">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="macos">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.roger.ink/img/debug_js_title.png">
+<meta name="twitter:image" content="https://www.roger.ink/img/linux_mac_replace_sources_title.jpg">
 
-<link rel="canonical" href="https://www.roger.ink/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/">
+<link rel="canonical" href="https://www.roger.ink/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/">
 
 
 <script id="page-configurations">
@@ -51,7 +48,7 @@
   };
 </script>
 
-  <title>用VSCode在容器中调试js | roger的小酒馆</title>
+  <title>linux和macos系统更换源 | roger的小酒馆</title>
   
 
 
@@ -203,7 +200,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/">
+    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -216,7 +213,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          用VSCode在容器中调试js
+          linux和macos系统更换源
         </h1>
 
         <div class="post-meta">
@@ -225,23 +222,21 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-11-03 15:30:26" itemprop="dateCreated datePublished" datetime="2020-11-03T15:30:26+08:00">2020-11-03</time>
+              <time title="创建时间：2020-11-22 11:46:04 / 修改时间：12:28:07" itemprop="dateCreated datePublished" datetime="2020-11-22T11:46:04+08:00">2020-11-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-04 21:22:32" itemprop="dateModified" datetime="2020-11-04T21:22:32+08:00">2020-11-04</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a>
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/macos/" itemprop="url" rel="index"><span itemprop="name">macos</span></a>
                 </span>
             </span>
 
@@ -250,7 +245,7 @@
             <span>｜</span>
             <span class="post-meta-item-text">本文字数：</span>
             <span title="post.wordcount">
-                717
+                535
             </span>
             <span>字</span>
             <span>｜</span>
@@ -261,7 +256,7 @@
             <span>分钟</span>
             <span>｜</span>
 
-            <span id="/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/" class="post-meta-item leancloud_visitors" data-flag-title="用VSCode在容器中调试js" title="阅读次数">
+            <span id="/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/" class="post-meta-item leancloud_visitors" data-flag-title="linux和macos系统更换源" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -278,8 +273,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -294,40 +289,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="/img/debug_js_title.png" alt="debug js"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 VSCode 的容器中，调试是比较麻烦的。主要是容器内外的端口需要映射，浏览器能正常连接后才能进行调试。根据调试的对象不同，方式也不尽相同。下面分别来进行说明。</p>
+        <p><img src="/img/linux_mac_replace_sources_title.jpg" alt="grep"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在使用linux或者macos的过程中，如果通过系统自带的命令行工具去获取资源，在国内由于某些原因，获取的速度会很慢，这是需要换成国内的源，这样才能更好的安装和更新资源。</p>
+<p>那么如何修改成国内的源呢，下面来细说一下。</p>
 <a id="more"></a>
 
-<h2 id="调试-Node-js"><a href="#调试-Node-js" class="headerlink" title="调试 Node.js"></a>调试 Node.js</h2><p>用 VSCode 进入容器后，打开调试面板，点击面板上方的设置按钮后，会打开 launch.json 配置文件，在该文件中进行如下设置。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Launch Node.js&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;skipFiles&quot;</span>: [<span class="string">&quot;&lt;node_internals&gt;/**&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;program&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;/server.js&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="修改ubuntu的apt源"><a href="#修改ubuntu的apt源" class="headerlink" title="修改ubuntu的apt源"></a>修改ubuntu的apt源</h2><p>首先备份apt的sources.list。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list&#123;,.bak&#125;</span><br></pre></td></tr></table></figure>
 
-<p>其中的各个参数说明如下:</p>
-<ul>
-<li>version: 配置文件的版本号。</li>
-<li>configurations: 配置调试器的地方，可配置多个。</li>
-<li>type: 表示调试的是 Node.js 代码。</li>
-<li>request: 表示每次启动调试的方式。<ul>
-<li>lauch: 会重新启动一个 Node.js 进程来进行调试。</li>
-<li>attach: 会附加到一个已经存在的 Node.js 进程来进行调试。</li>
-</ul>
-</li>
-<li>name: 调试配置的名字。</li>
-<li>skipFiles: 忽略掉不需要进行调试的文件。</li>
-<li>program: 启动调试后，程序的入口文件。</li>
-</ul>
-<p>设置完成后，用 VSCode 在容器中需要调试的地方打上断点，然后启动调试，用浏览器进行访问。如果没有问题，就可以看到程序已经停止在了断点处了。</p>
-<p><img src="/img/debug_nodejs_result.png" alt="最终调试结果"></p>
-<h2 id="调试普通-javascript-代码"><a href="#调试普通-javascript-代码" class="headerlink" title="调试普通 javascript 代码"></a>调试普通 javascript 代码</h2><p>在容器中调试 javascript，需要先在容器中安装 Debug for chrome 和 live server 两个插件。</p>
-<p><img src="/img/live_server.png" alt="live server"></p>
-<p><strong>重要</strong>: 由于我们调试的是容器中的应用，因此需要在容器启动的时候将容器中 live server 的端口映射出来。</p>
-<p><img src="/img/debug_for_chrome.png" alt="debug for chrome"></p>
-<p>如果对 live server 插件不熟悉，可以参考另外一篇关于 live server 的介绍。<br>首先启动 live server 插件。然后打开 launch.json 配置文件，在该插件中进行如下设置。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;chrome&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Launch Chrome&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;url&quot;</span>: <span class="string">&quot;http://localhost:5500/public/show.html&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后将sources.list替换为国内的阿里云地址。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i s/cn.archive.ubuntu/mirrors.aliyun/g /etc/apt/sources.list</span><br><span class="line">sudo sed -i s/archive.ubuntu/mirrors.aliyun/g /etc/apt/sources.list</span><br><span class="line">sudo sed -i s/security.ubuntu/mirrors.aliyun/g /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
 
-<p>其中最重要的参数是 url 的设置。它指向的是容器中的单个 html 文件。</p>
-<p>设置完成后，在需要调试的地方打上断点，然后启动调试，用浏览器进行访问。如果没有问题，就可以看到程序已经停止在了断点处了。</p>
-<p><img src="/img/debug_js_result.png" alt="最终调试结果"></p>
-<p>以上就是在容器中调试的内容了，更多关于在 vscode 中的调试技术，请参考<a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-recipes">vscode-recipes</a>、<a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/node-js-debugging/">node-js-debugging</a>和<a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/ndb">ndb</a>。另外，在文中提到的 live server 是个很不错的插件，它同时也是一个结合浏览器实时查看开发效果的神器。关于它的介绍，请参考<a target="_blank" rel="noopener" href="https://roger.ink/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/">用 live server 实时查看容器中的开发效果</a>。</p>
+<p>看一下sources.list中是否全部都是阿里云的地址了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/apt/sources.list|grep -vE <span class="string">&#x27;^#|^$&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>确认没有问题后，最后更新源就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改centos的yum源"><a href="#修改centos的yum源" class="headerlink" title="修改centos的yum源"></a>修改centos的yum源</h2><p>首先备份yum的CentOS-Base.repo。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d/CentOS-Base.repo&#123;,.bak&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后从阿里云下载最新的Centos-8.repo替换掉之前的CentOS-Base.repo。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure>
+
+<p>最后清理，缓存并更新源就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br><span class="line">yum update</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改macos的brew源"><a href="#修改macos的brew源" class="headerlink" title="修改macos的brew源"></a>修改macos的brew源</h2><p>首先替换brew在github的仓库地址为国内的阿里云地址。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span></span><br><span class="line">git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git</span><br></pre></td></tr></table></figure>
+
+<p>然后替换brew在github的软件仓库地址为国内的阿里云地址。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>/Library/Taps/homebrew/homebrew-core&quot;</span></span><br><span class="line">git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git</span><br></pre></td></tr></table></figure>
+
+<p>之后再替换brew的bottles源。</p>
+<p>对于bash用户：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>对于zsh用户：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>最后让brew更新源就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br></pre></td></tr></table></figure>
+
+<p>如果希望重置为官方的源，根据上面的操作步骤设置回去就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span></span><br><span class="line">git remote set-url origin https://github.com/Homebrew/brew.git</span><br><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>/Library/Taps/homebrew/homebrew-core&quot;</span></span><br><span class="line">git remote set-url origin https://github.com/Homebrew/homebrew-core.git</span><br></pre></td></tr></table></figure>
+
+<p>对于bash用户：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;&#x27;</span> <span class="string">&#x27;s/.*HOMEBREW_BOTTLE_DOMAIN.*//&#x27;</span>g ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>对于zsh用户：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;&#x27;</span> <span class="string">&#x27;s/.*HOMEBREW_BOTTLE_DOMAIN.*//&#x27;</span>g ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -347,7 +358,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/vscode/" rel="tag"># vscode</a>
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/macos/" rel="tag"># macos</a>
           </div>
 
         
@@ -355,11 +367,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/" rel="next" title="用live server实时查看容器中的开发效果">
-      用live server实时查看容器中的开发效果 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/11/21/docker%E7%9A%84%E5%AE%89%E8%A3%85/" rel="prev" title="docker和docker-compose的安装">
+      <i class="fa fa-chevron-left"></i> docker和docker-compose的安装
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -419,7 +431,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95-Node-js"><span class="nav-number">2.</span> <span class="nav-text">调试 Node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E6%99%AE%E9%80%9A-javascript-%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">调试普通 javascript 代码</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9ubuntu%E7%9A%84apt%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">修改ubuntu的apt源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9centos%E7%9A%84yum%E6%BA%90"><span class="nav-number">3.</span> <span class="nav-text">修改centos的yum源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9macos%E7%9A%84brew%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">修改macos的brew源</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
