@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/05/openssh%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -207,247 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/05/openssh%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/" class="post-title-link" itemprop="url">openssh的基本应用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-05 22:53:24 / 修改时间：23:13:42" itemprop="dateCreated datePublished" datetime="2020-11-05T22:53:24+08:00">2020-11-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-                </span>
-            </span>
-
-          
-
-            <span>｜</span>
-            <span class="post-meta-item-text">本文字数：</span>
-            <span title="post.wordcount">
-                2.2k
-            </span>
-            <span>字</span>
-            <span>｜</span>
-            <span class="post-meta-item-text">阅读时长：</span>
-            <span title="post.min2read">
-                8
-            </span>
-            <span>分钟</span>
-            <span>｜</span>
-
-            <span id="/2020/11/05/openssh%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="openssh的基本应用" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          <span>次</span>
-          <span>｜</span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/11/05/openssh%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/openssh%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/img/openssh_title.png" alt="openssl"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>OpenSSH 是 SSH （Secure SHell） 协议的免费开源实现。SSH 协议族可以用来进行远程控制， 或在计算机之间传送文件。而实现此功能的传统方式，如 telnet(终端仿真协议)、 rcp ftp、 rlogin、rsh 都是极为不安全的，并且会使用明文传送密码。OpenSSH 提供了服务端后台程序和客户端工具，用来加密远程控制和文件传输过程中的数据，并由此来代替原来的类似服务。</p>
-<p>OpenSSH 是使用 SSH 透过计算机网络加密通讯的实现。它是取代由 SSH Communications Security 所提供的商用版本的开放源代码方案。目前 OpenSSH 是 OpenBSD 的子计划。</p>
-<p>OpenSSH 常常被误认以为与 OpenSSL 有关联，但实际上这两个计划的有不同的目的，不同的发展团队，名称相近只是因为两者有同样的软件发展目标 ── 提供开放源代码的加密通讯软件。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/05/openssh%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="roger">
-      <meta itemprop="description" content="roger的技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="roger的小酒馆">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/" class="post-title-link" itemprop="url">openssl的基本应用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-05 22:49:48 / 修改时间：23:08:54" itemprop="dateCreated datePublished" datetime="2020-11-05T22:49:48+08:00">2020-11-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-                </span>
-            </span>
-
-          
-
-            <span>｜</span>
-            <span class="post-meta-item-text">本文字数：</span>
-            <span title="post.wordcount">
-                1.5k
-            </span>
-            <span>字</span>
-            <span>｜</span>
-            <span class="post-meta-item-text">阅读时长：</span>
-            <span title="post.min2read">
-                5
-            </span>
-            <span>分钟</span>
-            <span>｜</span>
-
-            <span id="/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="openssl的基本应用" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          <span>次</span>
-          <span>｜</span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/img/openssl_title.png" alt="openssl"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在计算机网络上，OpenSSL 是一个开放源代码的软件库包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。</p>
-<p>SSL 是 Secure Sockets Layer（安全套接层协议）的缩写，可以在 Internet 上提供秘密性传输。Netscape 公司在推出第一个 Web 浏览器的同时，提出了 SSL 协议标准。其目标是保证两个应用间通信的保密性和可靠性,可在服务器端和用户端同时实现支持。已经成为 Internet 上保密通讯的工业标准。</p>
-<p>SSL 能使用户/服务器应用之间的通信不被攻击者窃听，并且始终对服务器进行认证，还可选择对用户进行认证。SSL 协议要求建立在可靠的传输层协议(TCP)之上。SSL 协议的优势在于它是与应用层协议独立无关的，高层的应用层协议(例如：HTTP，FTP，TELNET 等)能透明地建立于 SSL 协议之上。SSL 协议在应用层协议通信之前就已经完成加密算法、通信密钥的协商及服务器认证工作。在此之后应用层协议所传送的数据都会被加密，从而保证通信的私密性。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/05/openssl%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="roger">
-      <meta itemprop="description" content="roger的技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="roger的小酒馆">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/" class="post-title-link" itemprop="url">交换capslock和control键位</a>
+            <a href="/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/" class="post-title-link" itemprop="url">linux和macos系统更换源</a>
         </h2>
 
         <div class="post-meta">
@@ -457,138 +217,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-04 23:32:00" itemprop="dateCreated datePublished" datetime="2020-11-04T23:32:00+08:00">2020-11-04</time>
+              <time title="创建时间：2020-11-22 11:46:04" itemprop="dateCreated datePublished" datetime="2020-11-22T11:46:04+08:00">2020-11-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-29 22:50:05" itemprop="dateModified" datetime="2020-11-29T22:50:05+08:00">2020-11-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a>
-                </span>
-            </span>
-
-          
-
-            <span>｜</span>
-            <span class="post-meta-item-text">本文字数：</span>
-            <span title="post.wordcount">
-                301
-            </span>
-            <span>字</span>
-            <span>｜</span>
-            <span class="post-meta-item-text">阅读时长：</span>
-            <span title="post.min2read">
-                1
-            </span>
-            <span>分钟</span>
-            <span>｜</span>
-
-            <span id="/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/" class="post-meta-item leancloud_visitors" data-flag-title="交换capslock和control键位" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          <span>次</span>
-          <span>｜</span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/img/modify_keys_title.png" alt="modify keys"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>对于使用 vim 和 emacs 的朋友来说，交换 capslock 和 control 的键位对于自己的习惯来说是至关重要的。那么如何设置才能交换呢，对于不同的操作系统有不同的方法。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/04/%E4%BA%A4%E6%8D%A2capslock%E5%92%8Ccontrol%E9%94%AE%E4%BD%8D/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="roger">
-      <meta itemprop="description" content="roger的技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="roger的小酒馆">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">grep的基本使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-04 00:00:46" itemprop="dateCreated datePublished" datetime="2020-11-04T00:00:46+08:00">2020-11-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-15 12:16:54" itemprop="dateModified" datetime="2020-11-15T12:16:54+08:00">2020-11-15</time>
+                <time title="修改时间：2020-11-29 22:50:13" itemprop="dateModified" datetime="2020-11-29T22:50:13+08:00">2020-11-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -598,131 +234,9 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
                 </span>
-            </span>
-
-          
-
-            <span>｜</span>
-            <span class="post-meta-item-text">本文字数：</span>
-            <span title="post.wordcount">
-                336
-            </span>
-            <span>字</span>
-            <span>｜</span>
-            <span class="post-meta-item-text">阅读时长：</span>
-            <span title="post.min2read">
-                1
-            </span>
-            <span>分钟</span>
-            <span>｜</span>
-
-            <span id="/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="grep的基本使用" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          <span>次</span>
-          <span>｜</span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/img/grep_title.jpg" alt="grep"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>grep 命令用于查找文件里符合条件的字符串。</p>
-<p>grep 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 -，则 grep 指令会从标准输入设备读取数据。</p>
-<p>grep 在 man 手册中的介绍是 print lines that match patterns。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/04/grep%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/03/sed%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="roger">
-      <meta itemprop="description" content="roger的技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="roger的小酒馆">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/03/sed%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">sed的基本使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-03 23:56:36" itemprop="dateCreated datePublished" datetime="2020-11-03T23:56:36+08:00">2020-11-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-15 11:56:06" itemprop="dateModified" datetime="2020-11-15T11:56:06+08:00">2020-11-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
+                  ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                  <a href="/categories/linux/macos/" itemprop="url" rel="index"><span itemprop="name">macos</span></a>
                 </span>
             </span>
 
@@ -731,260 +245,7 @@
             <span>｜</span>
             <span class="post-meta-item-text">本文字数：</span>
             <span title="post.wordcount">
-                972
-            </span>
-            <span>字</span>
-            <span>｜</span>
-            <span class="post-meta-item-text">阅读时长：</span>
-            <span title="post.min2read">
-                4
-            </span>
-            <span>分钟</span>
-            <span>｜</span>
-
-            <span id="/2020/11/03/sed%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="sed的基本使用" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          <span>次</span>
-          <span>｜</span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/11/03/sed%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/03/sed%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/img/sed_title.jpg" alt="sed"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>sed 命令是利用脚本来处理文本文件。</p>
-<p>sed 可依照脚本的指令来处理、编辑文本文件。</p>
-<p>sed 主要用来自动编辑一个或多个文件、简化对文件的反复操作、编写转换程序等。</p>
-<p>sed 在 man 手册中的介绍是 stream editor for filtering and transforming text。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/03/sed%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/03/awk%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="roger">
-      <meta itemprop="description" content="roger的技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="roger的小酒馆">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/03/awk%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">awk的基本使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-03 23:32:03" itemprop="dateCreated datePublished" datetime="2020-11-03T23:32:03+08:00">2020-11-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-15 12:53:37" itemprop="dateModified" datetime="2020-11-15T12:53:37+08:00">2020-11-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-                </span>
-            </span>
-
-          
-
-            <span>｜</span>
-            <span class="post-meta-item-text">本文字数：</span>
-            <span title="post.wordcount">
-                2.2k
-            </span>
-            <span>字</span>
-            <span>｜</span>
-            <span class="post-meta-item-text">阅读时长：</span>
-            <span title="post.min2read">
-                10
-            </span>
-            <span>分钟</span>
-            <span>｜</span>
-
-            <span id="/2020/11/03/awk%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="awk的基本使用" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          <span>次</span>
-          <span>｜</span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/11/03/awk%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/03/awk%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/img/awk_title.png" alt="awk"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>AWK - pattern scanning and text processing language</p>
-<p>AWK 是一种处理文本文件的语言，是一个强大的文本分析工具。</p>
-<p>之所以叫 AWK 是因为其取了三位创始人 Alfred Aho，Peter Weinberger, 和 Brian Kernighan 的 Family Name 的首字符。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/03/awk%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="roger">
-      <meta itemprop="description" content="roger的技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="roger的小酒馆">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/" class="post-title-link" itemprop="url">用live server实时查看容器中的开发效果</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-03 21:20:35" itemprop="dateCreated datePublished" datetime="2020-11-03T21:20:35+08:00">2020-11-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-04 21:22:32" itemprop="dateModified" datetime="2020-11-04T21:22:32+08:00">2020-11-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a>
-                </span>
-            </span>
-
-          
-
-            <span>｜</span>
-            <span class="post-meta-item-text">本文字数：</span>
-            <span title="post.wordcount">
-                731
+                552
             </span>
             <span>字</span>
             <span>｜</span>
@@ -995,7 +256,7 @@
             <span>分钟</span>
             <span>｜</span>
 
-            <span id="/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/" class="post-meta-item leancloud_visitors" data-flag-title="用live server实时查看容器中的开发效果" title="阅读次数">
+            <span id="/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/" class="post-meta-item leancloud_visitors" data-flag-title="linux和macos系统更换源" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -1012,8 +273,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1028,12 +289,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="/img/live_server_title.png" alt="live server"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 web 前端的开发过程中，经常会手动修改了一段代码之后需要立刻查看效果的时候。于是切换到浏览器，然后刷新网页进行查看。这个过程其实还可以更无缝的实现。</p>
-<p>live server 就是一款实时查看开发的 web 效果的插件。当你修改了 web 前端后，live server 会自动刷新并及时反映出目前 web 的效果。那么如果我们是在容器中开发项目呢，下面我们就来看看如何实现。</p>
+          <p><img src="/img/linux_macos_replace_sources_title.jpg" alt="replace sources"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在使用 linux 或者 macos 的过程中，如果通过系统自带的命令行工具去获取资源，在国内由于某些原因，获取的速度会很慢，这是需要换成国内的源，这样才能更好的安装和更新资源。</p>
+<p>那么如何修改成国内的源呢，下面来细说一下。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/#more" rel="contents">
+              <a class="btn" href="/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1061,7 +322,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/">
+    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/21/docker%E7%9A%84%E5%AE%89%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -1075,7 +336,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/" class="post-title-link" itemprop="url">用VSCode在容器中调试js</a>
+            <a href="/2020/11/21/docker%E7%9A%84%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">docker和docker-compose的安装</a>
         </h2>
 
         <div class="post-meta">
@@ -1085,14 +346,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-03 15:30:26" itemprop="dateCreated datePublished" datetime="2020-11-03T15:30:26+08:00">2020-11-03</time>
+              <time title="创建时间：2020-11-21 23:35:08" itemprop="dateCreated datePublished" datetime="2020-11-21T23:35:08+08:00">2020-11-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-04 21:22:32" itemprop="dateModified" datetime="2020-11-04T21:22:32+08:00">2020-11-04</time>
+                <time title="修改时间：2021-02-16 15:27:18" itemprop="dateModified" datetime="2021-02-16T15:27:18+08:00">2021-02-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1100,7 +361,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a>
+                  <a href="/categories/container/" itemprop="url" rel="index"><span itemprop="name">container</span></a>
                 </span>
             </span>
 
@@ -1109,7 +370,7 @@
             <span>｜</span>
             <span class="post-meta-item-text">本文字数：</span>
             <span title="post.wordcount">
-                717
+                588
             </span>
             <span>字</span>
             <span>｜</span>
@@ -1120,7 +381,7 @@
             <span>分钟</span>
             <span>｜</span>
 
-            <span id="/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/" class="post-meta-item leancloud_visitors" data-flag-title="用VSCode在容器中调试js" title="阅读次数">
+            <span id="/2020/11/21/docker%E7%9A%84%E5%AE%89%E8%A3%85/" class="post-meta-item leancloud_visitors" data-flag-title="docker和docker-compose的安装" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -1137,8 +398,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/11/21/docker%E7%9A%84%E5%AE%89%E8%A3%85/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/21/docker%E7%9A%84%E5%AE%89%E8%A3%85/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1153,11 +414,377 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="/img/debug_js_title.png" alt="debug js"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 VSCode 的容器中，调试是比较麻烦的。主要是容器内外的端口需要映射，浏览器能正常连接后才能进行调试。根据调试的对象不同，方式也不尽相同。下面分别来进行说明。</p>
+          <p><img src="/img/docker_installation_title.png" alt="docker"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux 或 Windows 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
+<p>docker 在各个平台上都提供了安装，下面记录一下各平台的安装方式。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/#more" rel="contents">
+              <a class="btn" href="/2020/11/21/docker%E7%9A%84%E5%AE%89%E8%A3%85/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/20/unity%E7%9A%84%E7%89%B9%E6%AE%8A%E8%B7%AF%E5%BE%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="roger">
+      <meta itemprop="description" content="roger的技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="roger的小酒馆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/20/unity%E7%9A%84%E7%89%B9%E6%AE%8A%E8%B7%AF%E5%BE%84/" class="post-title-link" itemprop="url">unity的特殊路径</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-20 17:10:39" itemprop="dateCreated datePublished" datetime="2020-11-20T17:10:39+08:00">2020-11-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-29 22:49:42" itemprop="dateModified" datetime="2020-11-29T22:49:42+08:00">2020-11-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/unity/" itemprop="url" rel="index"><span itemprop="name">unity</span></a>
+                </span>
+            </span>
+
+          
+
+            <span>｜</span>
+            <span class="post-meta-item-text">本文字数：</span>
+            <span title="post.wordcount">
+                512
+            </span>
+            <span>字</span>
+            <span>｜</span>
+            <span class="post-meta-item-text">阅读时长：</span>
+            <span title="post.min2read">
+                2
+            </span>
+            <span>分钟</span>
+            <span>｜</span>
+
+            <span id="/2020/11/20/unity%E7%9A%84%E7%89%B9%E6%AE%8A%E8%B7%AF%E5%BE%84/" class="post-meta-item leancloud_visitors" data-flag-title="unity的特殊路径" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          <span>次</span>
+          <span>｜</span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/11/20/unity%E7%9A%84%E7%89%B9%E6%AE%8A%E8%B7%AF%E5%BE%84/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/20/unity%E7%9A%84%E7%89%B9%E6%AE%8A%E8%B7%AF%E5%BE%84/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/img/unity_path_title.jpg" alt="unity"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Unity中特殊文件夹，是比较容易混淆的，在此记录一下。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/20/unity%E7%9A%84%E7%89%B9%E6%AE%8A%E8%B7%AF%E5%BE%84/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/15/wget%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="roger">
+      <meta itemprop="description" content="roger的技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="roger的小酒馆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/15/wget%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">wget的基本使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-15 10:48:13 / 修改时间：13:36:00" itemprop="dateCreated datePublished" datetime="2020-11-15T10:48:13+08:00">2020-11-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          
+
+            <span>｜</span>
+            <span class="post-meta-item-text">本文字数：</span>
+            <span title="post.wordcount">
+                197
+            </span>
+            <span>字</span>
+            <span>｜</span>
+            <span class="post-meta-item-text">阅读时长：</span>
+            <span title="post.min2read">
+                1
+            </span>
+            <span>分钟</span>
+            <span>｜</span>
+
+            <span id="/2020/11/15/wget%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="wget的基本使用" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          <span>次</span>
+          <span>｜</span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/11/15/wget%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/15/wget%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/img/wget_title.jpg" alt="wget"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>wget - the non-interactive network downloader</p>
+<p>wget 是一个从网络上自动下载文件的自由工具，支持通过 HTTP、HTTPS、FTP 三个最常见的 TCP/IP 协议 下载，并可以使用 HTTP 代理。”wget” 这个名称来源于 “World Wide Web” 与 “get” 的结合。</p>
+<p>所谓自动下载，是指 wget 可以在用户退出系统的之后在继续后台执行，直到下载任务完成。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/15/wget%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.roger.ink/2020/11/15/curl%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="roger">
+      <meta itemprop="description" content="roger的技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="roger的小酒馆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/15/curl%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">curl的基本使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-15 10:45:54 / 修改时间：13:48:42" itemprop="dateCreated datePublished" datetime="2020-11-15T10:45:54+08:00">2020-11-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          
+
+            <span>｜</span>
+            <span class="post-meta-item-text">本文字数：</span>
+            <span title="post.wordcount">
+                522
+            </span>
+            <span>字</span>
+            <span>｜</span>
+            <span class="post-meta-item-text">阅读时长：</span>
+            <span title="post.min2read">
+                2
+            </span>
+            <span>分钟</span>
+            <span>｜</span>
+
+            <span id="/2020/11/15/curl%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="curl的基本使用" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          <span>次</span>
+          <span>｜</span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/11/15/curl%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/15/curl%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/img/curl_title.png" alt="curl"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>curl - transfer a URL</p>
+<p>cURL 是一个利用 URL 语法在命令行下工作的文件传输工具，1997 年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称 cURL 为下载工具。cURL 还包含了用于程序开发的 libcurl。</p>
+<p>cURL 支持的通信协议有 FTP、FTPS、HTTP、HTTPS、TFTP、SFTP、Gopher、SCP、Telnet、DICT、FILE、LDAP、LDAPS、IMAP、POP3、SMTP 和 RTSP。</p>
+<p>curl 还支持 SSL 认证、HTTP POST、HTTP PUT、FTP 上传, HTTP form based upload、proxies、HTTP/2、cookies、用户名+密码认证(Basic, Plain, Digest, CRAM-MD5, NTLM, Negotiate and Kerberos)、file transfer resume、proxy tunneling。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/15/curl%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1184,7 +811,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
