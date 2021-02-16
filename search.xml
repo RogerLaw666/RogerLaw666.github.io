@@ -1,55 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>cmd的基本使用</title>
-    <url>/2020/11/29/cmd%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><img src="/img/cmd_title.jpg" alt="cmd"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>命令行（Command Processor）（CMD）是在 OS / 2 ， Windows CE 与 Windows NT 平台为基础的操作系统（包括 Windows 2000，Windows XP，Windows Vista，Windows Server 2003，Windows 7， Windows 8 ，Windows 8.1 ，Windows 10）下的“MS-DOS 方式”。一般 Windows 的各种版本都与其兼容，用户可以在 Windows 系统下运行 DOS 命令，中文版 Windows XP 中的命令提示符进一步提高了与 DOS 下操作命令的兼容性，用户可以在命令提示符直接输入中文调用文件。命令行功能多于 DOS。</p>
-<a id="more"></a>
-
-<h2 id="进入文件夹"><a href="#进入文件夹" class="headerlink" title="进入文件夹"></a>进入文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> $directory</span><br></pre></td></tr></table></figure>
-
-<h2 id="进入磁盘"><a href="#进入磁盘" class="headerlink" title="进入磁盘"></a>进入磁盘</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> c:</span><br></pre></td></tr></table></figure>
-
-<h2 id="回到磁盘根"><a href="#回到磁盘根" class="headerlink" title="回到磁盘根"></a>回到磁盘根</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> \</span><br></pre></td></tr></table></figure>
-
-<h2 id="列出当前文件夹"><a href="#列出当前文件夹" class="headerlink" title="列出当前文件夹"></a>列出当前文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
-
-<h2 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">md</span> $directory</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除文件夹"><a href="#删除文件夹" class="headerlink" title="删除文件夹"></a>删除文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rd</span> $directory</span><br></pre></td></tr></table></figure>
-
-<h2 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="built_in">nul</span>&gt;$file</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $content&gt;$file</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">del</span> $file</span><br></pre></td></tr></table></figure>
-
-<h2 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">copy</span> $source_file $target_file</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span> $file</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看文件类型"><a href="#查看文件类型" class="headerlink" title="查看文件类型"></a>查看文件类型</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">file $file</span><br></pre></td></tr></table></figure>
-
-<h2 id="从-cmd-打开图形界面"><a href="#从-cmd-打开图形界面" class="headerlink" title="从 cmd 打开图形界面"></a>从 cmd 打开图形界面</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start</span> .</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start</span> $file</span><br></pre></td></tr></table></figure>
-
-<h2 id="清屏"><a href="#清屏" class="headerlink" title="清屏"></a>清屏</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cls</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>windows</category>
-      </categories>
-      <tags>
-        <tag>windows</tag>
-        <tag>cmd</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>awk的基本使用</title>
     <url>/2020/11/03/awk%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="/img/awk_title.png" alt="awk"></p>
@@ -297,6 +248,106 @@
       </tags>
   </entry>
   <entry>
+    <title>cmd的基本使用</title>
+    <url>/2020/11/29/cmd%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><img src="/img/cmd_title.jpg" alt="cmd"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>命令行（Command Processor）（CMD）是在 OS / 2 ， Windows CE 与 Windows NT 平台为基础的操作系统（包括 Windows 2000，Windows XP，Windows Vista，Windows Server 2003，Windows 7， Windows 8 ，Windows 8.1 ，Windows 10）下的“MS-DOS 方式”。一般 Windows 的各种版本都与其兼容，用户可以在 Windows 系统下运行 DOS 命令，中文版 Windows XP 中的命令提示符进一步提高了与 DOS 下操作命令的兼容性，用户可以在命令提示符直接输入中文调用文件。命令行功能多于 DOS。</p>
+<a id="more"></a>
+
+<h2 id="进入文件夹"><a href="#进入文件夹" class="headerlink" title="进入文件夹"></a>进入文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> $directory</span><br></pre></td></tr></table></figure>
+
+<h2 id="进入磁盘"><a href="#进入磁盘" class="headerlink" title="进入磁盘"></a>进入磁盘</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> c:</span><br></pre></td></tr></table></figure>
+
+<h2 id="回到磁盘根"><a href="#回到磁盘根" class="headerlink" title="回到磁盘根"></a>回到磁盘根</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> \</span><br></pre></td></tr></table></figure>
+
+<h2 id="列出当前文件夹"><a href="#列出当前文件夹" class="headerlink" title="列出当前文件夹"></a>列出当前文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">md</span> $directory</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除文件夹"><a href="#删除文件夹" class="headerlink" title="删除文件夹"></a>删除文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rd</span> $directory</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="built_in">nul</span>&gt;$file</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $content&gt;$file</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">del</span> $file</span><br></pre></td></tr></table></figure>
+
+<h2 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">copy</span> $source_file $target_file</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span> $file</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看文件类型"><a href="#查看文件类型" class="headerlink" title="查看文件类型"></a>查看文件类型</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">file $file</span><br></pre></td></tr></table></figure>
+
+<h2 id="从-cmd-打开图形界面"><a href="#从-cmd-打开图形界面" class="headerlink" title="从 cmd 打开图形界面"></a>从 cmd 打开图形界面</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start</span> .</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start</span> $file</span><br></pre></td></tr></table></figure>
+
+<h2 id="清屏"><a href="#清屏" class="headerlink" title="清屏"></a>清屏</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cls</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>windows</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
+        <tag>cmd</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker和docker-compose的安装</title>
+    <url>/2020/11/21/docker%E7%9A%84%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p><img src="/img/docker_installation_title.png" alt="docker"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux 或 Windows 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
+<p>docker 在各个平台上都提供了安装，下面记录一下各平台的安装方式。</p>
+<a id="more"></a>
+
+<h2 id="安装-docker"><a href="#安装-docker" class="headerlink" title="安装 docker"></a>安装 docker</h2><p>windows 和 macos 下安装 docker，可以直接下载官网的社区版进行安装。企业版强调安全性，是需要付费的。</p>
+<p>ubuntu 下安装 docker，可以直接使用 apt 进行安装。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install -y docker.io</span><br></pre></td></tr></table></figure>
+
+<p>centos 下安装 docker，可以获取 docker 官网的脚本，并修改源为阿里云，以便加速安装。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh --mirror Aliyun</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，设置开机启动。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+
+<p>接着启动 docker 进程。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<p>然后创建 docker 组，并将当前用户加入到这个组中，获取 docker 的权限，不然每次使用 docker 命令都需要加上 sudo。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo groupadd docker</span><br><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
+
+<p>为了加快拉取 docker 镜像的速度，接下来修改 docker 的镜像源。使用中科大或者阿里云的镜像源。阿里云的镜像地址需要到阿里云上注册账号，使用它的 docker 服务获取。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;&#123;&quot;registry-mirrors&quot;: [&quot;https://docker.mirrors.ustc.edu.cn&quot;]&#125;&#x27;</span>|sudo tee /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+
+<p>docker 中默认 detachKeys 的前缀为 ctrl+p，这会使得原本在命令行中使用 ctrl+p 出现冲突，所以需要修改为其它快捷键。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir ~/.docker</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;&#123;&quot;detachKeys&quot;: &quot;ctrl-e,e&quot;&#125;&#x27;</span>&gt;~/.docker/config.json</span><br></pre></td></tr></table></figure>
+
+<p>修改完成后，重启 docker 服务。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p>此时，有可能之前设置的还没有生效，退出用户登陆后重新登陆一次就可以了。</p>
+<h2 id="安装-docker-compose"><a href="#安装-docker-compose" class="headerlink" title="安装 docker-compose"></a>安装 docker-compose</h2><p>windows 和 macos 在安装完 docker 后，docker-compose 就已经安装好了，无需额外安装。</p>
+<p>ubuntu 下可以使用 apt 进行安装。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install -y docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>centos 下可以获取 docker-compose 的安装脚本进行安装。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` &gt; ~/docker-compose &amp;&amp; sudo mv ~/docker-compose /usr/bin &amp;&amp; chmod +x /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>container</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>windows</tag>
+        <tag>docker</tag>
+        <tag>macos</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>curl的基本使用</title>
     <url>/2020/11/15/curl%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="/img/curl_title.png" alt="curl"></p>
@@ -367,64 +418,13 @@
       </categories>
       <tags>
         <tag>linux</tag>
+        <tag>macos</tag>
         <tag>curl</tag>
-        <tag>macos</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker和docker-compose的安装</title>
-    <url>/2020/11/21/docker%E7%9A%84%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<p><img src="/img/docker_installation_title.png" alt="docker"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux 或 Windows 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
-<p>docker 在各个平台上都提供了安装，下面记录一下各平台的安装方式。</p>
-<a id="more"></a>
-
-<h2 id="安装-docker"><a href="#安装-docker" class="headerlink" title="安装 docker"></a>安装 docker</h2><p>windows 和 macos 下安装 docker，可以直接下载官网的社区版进行安装。企业版强调安全性，是需要付费的。</p>
-<p>ubuntu 下安装 docker，可以直接使用 apt 进行安装。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install -y docker.io</span><br></pre></td></tr></table></figure>
-
-<p>centos 下安装 docker，可以获取 docker 官网的脚本，并修改源为阿里云，以便加速安装。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh --mirror Aliyun</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，设置开机启动。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
-
-<p>接着启动 docker 进程。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
-
-<p>然后创建 docker 组，并将当前用户加入到这个组中，获取 docker 的权限，不然每次使用 docker 命令都需要加上 sudo。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo groupadd docker</span><br><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
-
-<p>为了加快拉取 docker 镜像的速度，接下来修改 docker 的镜像源。使用中科大或者阿里云的镜像源。阿里云的镜像地址需要到阿里云上注册账号，使用它的 docker 服务获取。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;&#123;&quot;registry-mirrors&quot;: [&quot;https://docker.mirrors.ustc.edu.cn&quot;]&#125;&#x27;</span>|sudo tee /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
-
-<p>docker 中默认 detachKeys 的前缀为 ctrl+p，这会使得原本在命令行中使用 ctrl+p 出现冲突，所以需要修改为其它快捷键。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir ~/.docker</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;&#123;&quot;detachKeys&quot;: &quot;ctrl-e,e&quot;&#125;&#x27;</span>&gt;~/.docker/config.json</span><br></pre></td></tr></table></figure>
-
-<p>修改完成后，重启 docker 服务。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-<p>此时，有可能之前设置的还没有生效，退出用户登陆后重新登陆一次就可以了。</p>
-<h2 id="安装-docker-compose"><a href="#安装-docker-compose" class="headerlink" title="安装 docker-compose"></a>安装 docker-compose</h2><p>windows 和 macos 在安装完 docker 后，docker-compose 就已经安装好了，无需额外安装。</p>
-<p>ubuntu 下可以使用 apt 进行安装。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install -y docker-compose</span><br></pre></td></tr></table></figure>
-
-<p>centos 下可以获取 docker-compose 的安装脚本进行安装。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` &gt; ~/docker-compose &amp;&amp; sudo mv ~/docker-compose /usr/bin &amp;&amp; chmod +x /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>container</category>
-      </categories>
-      <tags>
-        <tag>windows</tag>
-        <tag>linux</tag>
-        <tag>macos</tag>
-        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
     <title>es6备忘录</title>
-    <url>/2021/02/16/es6%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <url>/2021/02/16/es6%E5%A4%87%E5%BF%98%E5%BD%95/</url>
     <content><![CDATA[<p><img src="/img/es6_title.jpg" alt="es6"></p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>ES6，全称 ECMAScript 6.0，是 JavaScript 的下一个版本标准，2015.06 发版。</p>
 <p>ES6 主要是为了解决 ES5 的先天不足，为其添加了许多新的语法特性，ES6 是 ECMAScript 标准十余年来变动最大的一个版本。</p>
@@ -1036,7 +1036,7 @@
 <tr>
 <td>AllowUsers</td>
 <td></td>
-<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么将仅允许这些用户登录，而拒绝其它所有用户。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。例如:AllowUsers <a href="mailto:&#97;&#100;&#x6d;&#x69;&#110;&#64;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#x38;&#x2e;&#48;&#46;&#49;">&#97;&#100;&#x6d;&#x69;&#110;&#64;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#x38;&#x2e;&#48;&#46;&#49;</a>。指定多用户用空格:AllowUsers <a href="mailto:&#97;&#x64;&#x6d;&#x69;&#x6e;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#x38;&#x2e;&#48;&#x2e;&#x31;">&#97;&#x64;&#x6d;&#x69;&#x6e;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#x38;&#x2e;&#48;&#x2e;&#x31;</a> user1</td>
+<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么将仅允许这些用户登录，而拒绝其它所有用户。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。例如:AllowUsers <a href="mailto:&#97;&#x64;&#x6d;&#x69;&#110;&#x40;&#x31;&#57;&#50;&#46;&#49;&#x36;&#x38;&#46;&#x30;&#x2e;&#x31;">&#97;&#x64;&#x6d;&#x69;&#110;&#x40;&#x31;&#57;&#50;&#46;&#49;&#x36;&#x38;&#46;&#x30;&#x2e;&#x31;</a>。指定多用户用空格:AllowUsers <a href="mailto:&#97;&#x64;&#109;&#105;&#110;&#64;&#49;&#x39;&#50;&#46;&#49;&#x36;&#56;&#46;&#48;&#x2e;&#x31;">&#97;&#x64;&#109;&#105;&#110;&#64;&#49;&#x39;&#50;&#46;&#49;&#x36;&#56;&#46;&#48;&#x2e;&#x31;</a> user1</td>
 </tr>
 <tr>
 <td>AllowGroups</td>
