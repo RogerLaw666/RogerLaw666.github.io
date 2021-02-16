@@ -576,6 +576,69 @@
       </tags>
   </entry>
   <entry>
+    <title>linux和macos系统更换源</title>
+    <url>/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/</url>
+    <content><![CDATA[<p><img src="/img/linux_macos_replace_sources_title.jpg" alt="replace sources"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在使用 linux 或者 macos 的过程中，如果通过系统自带的命令行工具去获取资源，在国内由于某些原因，获取的速度会很慢，这是需要换成国内的源，这样才能更好的安装和更新资源。</p>
+<p>那么如何修改成国内的源呢，下面来细说一下。</p>
+<a id="more"></a>
+
+<h2 id="修改-ubuntu-的-apt-源"><a href="#修改-ubuntu-的-apt-源" class="headerlink" title="修改 ubuntu 的 apt 源"></a>修改 ubuntu 的 apt 源</h2><p>首先备份 apt 的 sources.list。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list&#123;,.bak&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后将 sources.list 替换为国内的阿里云地址。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sed -i s/cn.archive.ubuntu/mirrors.aliyun/g /etc/apt/sources.list</span><br><span class="line">sudo sed -i s/archive.ubuntu/mirrors.aliyun/g /etc/apt/sources.list</span><br><span class="line">sudo sed -i s/security.ubuntu/mirrors.aliyun/g /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<p>看一下 sources.list 中是否全部都是阿里云的地址了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /etc/apt/sources.list|grep -vE <span class="string">&#x27;^#|^$&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>确认没有问题后，最后更新源就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改-centos-的-yum-源"><a href="#修改-centos-的-yum-源" class="headerlink" title="修改 centos 的 yum 源"></a>修改 centos 的 yum 源</h2><p>首先备份 yum 的 CentOS-Base.repo。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo cp /etc/yum.repos.d/CentOS-Base.repo&#123;,.bak&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后从阿里云下载最新的 Centos-8.repo 替换掉之前的 CentOS-Base.repo。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo</span><br></pre></td></tr></table></figure>
+
+<p>最后清理并缓存就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum clean all</span><br><span class="line">sudo yum makecache</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改-macos-的-brew-源"><a href="#修改-macos-的-brew-源" class="headerlink" title="修改 macos 的 brew 源"></a>修改 macos 的 brew 源</h2><p>首先替换 brew 在 github 的仓库地址为国内的阿里云地址。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span></span><br><span class="line">git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git</span><br></pre></td></tr></table></figure>
+
+<p>然后替换 brew 在 github 的软件仓库地址为国内的阿里云地址。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>/Library/Taps/homebrew/homebrew-core&quot;</span></span><br><span class="line">git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git</span><br></pre></td></tr></table></figure>
+
+<p>之后再替换 brew 的 bottles 源。</p>
+<p>对于 bash 用户：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>对于 zsh 用户：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>最后让 brew 更新源就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew update</span><br></pre></td></tr></table></figure>
+
+<p>如果希望重置为官方的源，根据上面的操作步骤设置回去就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span></span><br><span class="line">git remote set-url origin https://github.com/Homebrew/brew.git</span><br><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>/Library/Taps/homebrew/homebrew-core&quot;</span></span><br><span class="line">git remote set-url origin https://github.com/Homebrew/homebrew-core.git</span><br></pre></td></tr></table></figure>
+
+<p>对于 bash 用户：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;&#x27;</span> <span class="string">&#x27;s/.*HOMEBREW_BOTTLE_DOMAIN.*//&#x27;</span>g ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>对于 zsh 用户：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;&#x27;</span> <span class="string">&#x27;s/.*HOMEBREW_BOTTLE_DOMAIN.*//&#x27;</span>g ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>macos</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>macos</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>openssh的基本应用</title>
     <url>/2020/11/05/openssh%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8/</url>
     <content><![CDATA[<p><img src="/img/openssh_title.png" alt="openssl"></p>
@@ -890,7 +953,7 @@
 <tr>
 <td>AllowUsers</td>
 <td></td>
-<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么将仅允许这些用户登录，而拒绝其它所有用户。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。例如:AllowUsers <a href="mailto:&#x61;&#100;&#109;&#x69;&#110;&#x40;&#x31;&#57;&#50;&#x2e;&#49;&#54;&#x38;&#x2e;&#48;&#x2e;&#49;">&#x61;&#100;&#109;&#x69;&#110;&#x40;&#x31;&#57;&#50;&#x2e;&#49;&#54;&#x38;&#x2e;&#48;&#x2e;&#49;</a>。指定多用户用空格:AllowUsers <a href="mailto:&#97;&#100;&#109;&#x69;&#x6e;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#54;&#x38;&#x2e;&#x30;&#x2e;&#49;">&#97;&#100;&#109;&#x69;&#x6e;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#54;&#x38;&#x2e;&#x30;&#x2e;&#49;</a> user1</td>
+<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么将仅允许这些用户登录，而拒绝其它所有用户。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。例如:AllowUsers <a href="mailto:&#x61;&#100;&#109;&#x69;&#x6e;&#x40;&#49;&#57;&#50;&#46;&#49;&#x36;&#x38;&#x2e;&#48;&#46;&#x31;">&#x61;&#100;&#109;&#x69;&#x6e;&#x40;&#49;&#57;&#50;&#46;&#49;&#x36;&#x38;&#x2e;&#48;&#46;&#x31;</a>。指定多用户用空格:AllowUsers <a href="mailto:&#x61;&#100;&#x6d;&#105;&#x6e;&#64;&#49;&#57;&#x32;&#x2e;&#49;&#x36;&#56;&#46;&#48;&#46;&#49;">&#x61;&#100;&#x6d;&#105;&#x6e;&#64;&#49;&#57;&#x32;&#x2e;&#49;&#x36;&#56;&#46;&#48;&#46;&#49;</a> user1</td>
 </tr>
 <tr>
 <td>AllowGroups</td>
@@ -955,69 +1018,6 @@
         <tag>linux</tag>
         <tag>openssl</tag>
         <tag>openssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>linux和macos系统更换源</title>
-    <url>/2020/11/22/linux%E5%92%8Cmacos%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%8D%A2%E6%BA%90/</url>
-    <content><![CDATA[<p><img src="/img/linux_macos_replace_sources_title.jpg" alt="replace sources"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在使用 linux 或者 macos 的过程中，如果通过系统自带的命令行工具去获取资源，在国内由于某些原因，获取的速度会很慢，这是需要换成国内的源，这样才能更好的安装和更新资源。</p>
-<p>那么如何修改成国内的源呢，下面来细说一下。</p>
-<a id="more"></a>
-
-<h2 id="修改-ubuntu-的-apt-源"><a href="#修改-ubuntu-的-apt-源" class="headerlink" title="修改 ubuntu 的 apt 源"></a>修改 ubuntu 的 apt 源</h2><p>首先备份 apt 的 sources.list。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list&#123;,.bak&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后将 sources.list 替换为国内的阿里云地址。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sed -i s/cn.archive.ubuntu/mirrors.aliyun/g /etc/apt/sources.list</span><br><span class="line">sudo sed -i s/archive.ubuntu/mirrors.aliyun/g /etc/apt/sources.list</span><br><span class="line">sudo sed -i s/security.ubuntu/mirrors.aliyun/g /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-<p>看一下 sources.list 中是否全部都是阿里云的地址了。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /etc/apt/sources.list|grep -vE <span class="string">&#x27;^#|^$&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>确认没有问题后，最后更新源就可以了。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改-centos-的-yum-源"><a href="#修改-centos-的-yum-源" class="headerlink" title="修改 centos 的 yum 源"></a>修改 centos 的 yum 源</h2><p>首先备份 yum 的 CentOS-Base.repo。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo cp /etc/yum.repos.d/CentOS-Base.repo&#123;,.bak&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后从阿里云下载最新的 Centos-8.repo 替换掉之前的 CentOS-Base.repo。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo</span><br></pre></td></tr></table></figure>
-
-<p>最后清理并缓存就可以了。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum clean all</span><br><span class="line">sudo yum makecache</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改-macos-的-brew-源"><a href="#修改-macos-的-brew-源" class="headerlink" title="修改 macos 的 brew 源"></a>修改 macos 的 brew 源</h2><p>首先替换 brew 在 github 的仓库地址为国内的阿里云地址。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span></span><br><span class="line">git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git</span><br></pre></td></tr></table></figure>
-
-<p>然后替换 brew 在 github 的软件仓库地址为国内的阿里云地址。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>/Library/Taps/homebrew/homebrew-core&quot;</span></span><br><span class="line">git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git</span><br></pre></td></tr></table></figure>
-
-<p>之后再替换 brew 的 bottles 源。</p>
-<p>对于 bash 用户：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<p>对于 zsh 用户：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-<p>最后让 brew 更新源就可以了。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew update</span><br></pre></td></tr></table></figure>
-
-<p>如果希望重置为官方的源，根据上面的操作步骤设置回去就可以了。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span></span><br><span class="line">git remote set-url origin https://github.com/Homebrew/brew.git</span><br><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>/Library/Taps/homebrew/homebrew-core&quot;</span></span><br><span class="line">git remote set-url origin https://github.com/Homebrew/homebrew-core.git</span><br></pre></td></tr></table></figure>
-
-<p>对于 bash 用户：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;&#x27;</span> <span class="string">&#x27;s/.*HOMEBREW_BOTTLE_DOMAIN.*//&#x27;</span>g ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<p>对于 zsh 用户：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;&#x27;</span> <span class="string">&#x27;s/.*HOMEBREW_BOTTLE_DOMAIN.*//&#x27;</span>g ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>macos</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>macos</tag>
       </tags>
   </entry>
   <entry>
@@ -1439,51 +1439,6 @@
       </tags>
   </entry>
   <entry>
-    <title>用live server实时查看容器中的开发效果</title>
-    <url>/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/</url>
-    <content><![CDATA[<p><img src="/img/live_server_title.png" alt="live server"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 web 前端的开发过程中，经常会手动修改了一段代码之后需要立刻查看效果的时候。于是切换到浏览器，然后刷新网页进行查看。这个过程其实还可以更无缝的实现。</p>
-<p>live server 就是一款实时查看开发的 web 效果的插件。当你修改了 web 前端后，live server 会自动刷新并及时反映出目前 web 的效果。那么如果我们是在容器中开发项目呢，下面我们就来看看如何实现。</p>
-<a id="more"></a>
-
-<h2 id="安装和使用-live-server-插件"><a href="#安装和使用-live-server-插件" class="headerlink" title="安装和使用 live server 插件"></a>安装和使用 live server 插件</h2><p>live server 插件的安装方式非常简单。在 VSCode 中的扩展中搜索到 live server 插件后选择安装即可。</p>
-<p><img src="/img/live_server.png" alt="live server"></p>
-<p>安装完成后，我们来启动 live server 插件。</p>
-<p>在 VSCode 的右下角，点击 Go Live 的图标启动服务。该插件默认会监听 5500 端口。</p>
-<p><img src="/img/live_server_start.jpg" alt="start live server"></p>
-<p>这时可以打开浏览器，输入需要查看的网址，也可以对 VSCode 文件管理器中的文件右键，选择用 live server 打开，然后在 VSCode 中更改选择的文件代码吧，你会发现，浏览器中内容也在不断更新以实时反映开发效果。</p>
-<p><img src="/img/live_server_open.jpg" alt="open live server"></p>
-<p>最终效果如下:</p>
-<p><img src="/img/live_server_result.gif" alt="open live server"></p>
-<h2 id="在容器中使用-live-server"><a href="#在容器中使用-live-server" class="headerlink" title="在容器中使用 live server"></a>在容器中使用 live server</h2><p>在容器中使用 live server，需要先在容器中安装 live server。</p>
-<p>由于我们调试的是容器中的应用，因此需要在容器启动的时候将容器中 live server 的端口映射出来。容器中的 live server 默认监听的端口是 5500，因此需要将 5500 端口映射出来。</p>
-<p><img src="/img/live_server_exports.png" alt="映射端口"></p>
-<p>上图中，我的 web 服务器端口是 3000，live server 端口是 5500。</p>
-<p>映射端口完成后，点击 VSCode 右下角 Go Live 按钮开启服务。 不过这时只能通过 live server 的 5500 端口观察到实时的效果。如果希望通过 3000 端口观察的话，需要额外安装 live server web extension 插件。</p>
-<p><img src="/img/live_server_web_extension.png" alt="live server web extension"></p>
-<p>live server web extension 可以让 PHP，.NET 和 Node.js 中的代码一样的工作在 live server 的实时观察模式下。</p>
-<p><a href="https://github.com/ritwickdey/live-server-web-extension">live server web extension</a></p>
-<p>安装完成后，在浏览器中打开该插件，在该插件中进行如下设置。</p>
-<p><img src="/img/live_server_web_extension_chrome.png" alt="alt"></p>
-<p>其中的各个设置说明如下:</p>
-<ul>
-<li>Live Reload: 打开或关闭实时查看功能。</li>
-<li>I don’t want proxy setup(recommended): 是否不使用代理功能。</li>
-<li>Actual Server Address: 需要调试的服务器的地址。</li>
-<li>Live Server Address: live server 服务的地址。</li>
-</ul>
-<p>在 Actual Server Address 和 live Server Address 中填入合适的地址后，点击 Apply 就应用成功了。</p>
-<p>设置完成后，打开浏览器，输入需要查看的网址，然后在 VSCode 中更改选择的文件代码吧，你会发现，浏览器中内容也在不断更新以实时反映开发效果。</p>
-<p>以上就是 live server 的基本使用方式和在容器中的使用方式。</p>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>vscode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用VSCode在容器中调试js</title>
     <url>/2020/11/03/%E7%94%A8VSCode%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%B0%83%E8%AF%95js/</url>
     <content><![CDATA[<p><img src="/img/debug_js_title.png" alt="debug js"></p>
@@ -1520,6 +1475,51 @@
 <p>设置完成后，在需要调试的地方打上断点，然后启动调试，用浏览器进行访问。如果没有问题，就可以看到程序已经停止在了断点处了。</p>
 <p><img src="/img/debug_js_result.png" alt="最终调试结果"></p>
 <p>以上就是在容器中调试的内容了，更多关于在 vscode 中的调试技术，请参考<a href="https://github.com/microsoft/vscode-recipes">vscode-recipes</a>、<a href="https://www.freecodecamp.org/news/node-js-debugging/">node-js-debugging</a>和<a href="https://github.com/GoogleChromeLabs/ndb">ndb</a>。另外，在文中提到的 live server 是个很不错的插件，它同时也是一个结合浏览器实时查看开发效果的神器。关于它的介绍，请参考<a href="https://roger.ink/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/">用 live server 实时查看容器中的开发效果</a>。</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用live server实时查看容器中的开发效果</title>
+    <url>/2020/11/03/%E7%94%A8live-server%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E6%95%88%E6%9E%9C/</url>
+    <content><![CDATA[<p><img src="/img/live_server_title.png" alt="live server"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 web 前端的开发过程中，经常会手动修改了一段代码之后需要立刻查看效果的时候。于是切换到浏览器，然后刷新网页进行查看。这个过程其实还可以更无缝的实现。</p>
+<p>live server 就是一款实时查看开发的 web 效果的插件。当你修改了 web 前端后，live server 会自动刷新并及时反映出目前 web 的效果。那么如果我们是在容器中开发项目呢，下面我们就来看看如何实现。</p>
+<a id="more"></a>
+
+<h2 id="安装和使用-live-server-插件"><a href="#安装和使用-live-server-插件" class="headerlink" title="安装和使用 live server 插件"></a>安装和使用 live server 插件</h2><p>live server 插件的安装方式非常简单。在 VSCode 中的扩展中搜索到 live server 插件后选择安装即可。</p>
+<p><img src="/img/live_server.png" alt="live server"></p>
+<p>安装完成后，我们来启动 live server 插件。</p>
+<p>在 VSCode 的右下角，点击 Go Live 的图标启动服务。该插件默认会监听 5500 端口。</p>
+<p><img src="/img/live_server_start.jpg" alt="start live server"></p>
+<p>这时可以打开浏览器，输入需要查看的网址，也可以对 VSCode 文件管理器中的文件右键，选择用 live server 打开，然后在 VSCode 中更改选择的文件代码吧，你会发现，浏览器中内容也在不断更新以实时反映开发效果。</p>
+<p><img src="/img/live_server_open.jpg" alt="open live server"></p>
+<p>最终效果如下:</p>
+<p><img src="/img/live_server_result.gif" alt="open live server"></p>
+<h2 id="在容器中使用-live-server"><a href="#在容器中使用-live-server" class="headerlink" title="在容器中使用 live server"></a>在容器中使用 live server</h2><p>在容器中使用 live server，需要先在容器中安装 live server。</p>
+<p>由于我们调试的是容器中的应用，因此需要在容器启动的时候将容器中 live server 的端口映射出来。容器中的 live server 默认监听的端口是 5500，因此需要将 5500 端口映射出来。</p>
+<p><img src="/img/live_server_exports.png" alt="映射端口"></p>
+<p>上图中，我的 web 服务器端口是 3000，live server 端口是 5500。</p>
+<p>映射端口完成后，点击 VSCode 右下角 Go Live 按钮开启服务。 不过这时只能通过 live server 的 5500 端口观察到实时的效果。如果希望通过 3000 端口观察的话，需要额外安装 live server web extension 插件。</p>
+<p><img src="/img/live_server_web_extension.png" alt="live server web extension"></p>
+<p>live server web extension 可以让 PHP，.NET 和 Node.js 中的代码一样的工作在 live server 的实时观察模式下。</p>
+<p><a href="https://github.com/ritwickdey/live-server-web-extension">live server web extension</a></p>
+<p>安装完成后，在浏览器中打开该插件，在该插件中进行如下设置。</p>
+<p><img src="/img/live_server_web_extension_chrome.png" alt="alt"></p>
+<p>其中的各个设置说明如下:</p>
+<ul>
+<li>Live Reload: 打开或关闭实时查看功能。</li>
+<li>I don’t want proxy setup(recommended): 是否不使用代理功能。</li>
+<li>Actual Server Address: 需要调试的服务器的地址。</li>
+<li>Live Server Address: live server 服务的地址。</li>
+</ul>
+<p>在 Actual Server Address 和 live Server Address 中填入合适的地址后，点击 Apply 就应用成功了。</p>
+<p>设置完成后，打开浏览器，输入需要查看的网址，然后在 VSCode 中更改选择的文件代码吧，你会发现，浏览器中内容也在不断更新以实时反映开发效果。</p>
+<p>以上就是 live server 的基本使用方式和在容器中的使用方式。</p>
 ]]></content>
       <categories>
         <category>tools</category>
