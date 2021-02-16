@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>cmd的基本使用</title>
+    <url>/2020/11/29/cmd%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><img src="/img/cmd_title.jpg" alt="cmd"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>命令行（Command Processor）（CMD）是在 OS / 2 ， Windows CE 与 Windows NT 平台为基础的操作系统（包括 Windows 2000，Windows XP，Windows Vista，Windows Server 2003，Windows 7， Windows 8 ，Windows 8.1 ，Windows 10）下的“MS-DOS 方式”。一般 Windows 的各种版本都与其兼容，用户可以在 Windows 系统下运行 DOS 命令，中文版 Windows XP 中的命令提示符进一步提高了与 DOS 下操作命令的兼容性，用户可以在命令提示符直接输入中文调用文件。命令行功能多于 DOS。</p>
+<a id="more"></a>
+
+<h2 id="进入文件夹"><a href="#进入文件夹" class="headerlink" title="进入文件夹"></a>进入文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> $directory</span><br></pre></td></tr></table></figure>
+
+<h2 id="进入磁盘"><a href="#进入磁盘" class="headerlink" title="进入磁盘"></a>进入磁盘</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> c:</span><br></pre></td></tr></table></figure>
+
+<h2 id="回到磁盘根"><a href="#回到磁盘根" class="headerlink" title="回到磁盘根"></a>回到磁盘根</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> \</span><br></pre></td></tr></table></figure>
+
+<h2 id="列出当前文件夹"><a href="#列出当前文件夹" class="headerlink" title="列出当前文件夹"></a>列出当前文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">md</span> $directory</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除文件夹"><a href="#删除文件夹" class="headerlink" title="删除文件夹"></a>删除文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rd</span> $directory</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="built_in">nul</span>&gt;$file</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $content&gt;$file</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">del</span> $file</span><br></pre></td></tr></table></figure>
+
+<h2 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">copy</span> $source_file $target_file</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span> $file</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看文件类型"><a href="#查看文件类型" class="headerlink" title="查看文件类型"></a>查看文件类型</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">file $file</span><br></pre></td></tr></table></figure>
+
+<h2 id="从-cmd-打开图形界面"><a href="#从-cmd-打开图形界面" class="headerlink" title="从 cmd 打开图形界面"></a>从 cmd 打开图形界面</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start</span> .</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start</span> $file</span><br></pre></td></tr></table></figure>
+
+<h2 id="清屏"><a href="#清屏" class="headerlink" title="清屏"></a>清屏</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cls</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>windows</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
+        <tag>cmd</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>awk的基本使用</title>
     <url>/2020/11/03/awk%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="/img/awk_title.png" alt="awk"></p>
@@ -248,55 +297,6 @@
       </tags>
   </entry>
   <entry>
-    <title>cmd的基本使用</title>
-    <url>/2020/11/29/cmd%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><img src="/img/cmd_title.jpg" alt="cmd"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>命令行（Command Processor）（CMD）是在 OS / 2 ， Windows CE 与 Windows NT 平台为基础的操作系统（包括 Windows 2000，Windows XP，Windows Vista，Windows Server 2003，Windows 7， Windows 8 ，Windows 8.1 ，Windows 10）下的“MS-DOS 方式”。一般 Windows 的各种版本都与其兼容，用户可以在 Windows 系统下运行 DOS 命令，中文版 Windows XP 中的命令提示符进一步提高了与 DOS 下操作命令的兼容性，用户可以在命令提示符直接输入中文调用文件。命令行功能多于 DOS。</p>
-<a id="more"></a>
-
-<h2 id="进入文件夹"><a href="#进入文件夹" class="headerlink" title="进入文件夹"></a>进入文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> $directory</span><br></pre></td></tr></table></figure>
-
-<h2 id="进入磁盘"><a href="#进入磁盘" class="headerlink" title="进入磁盘"></a>进入磁盘</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> c:</span><br></pre></td></tr></table></figure>
-
-<h2 id="回到磁盘根"><a href="#回到磁盘根" class="headerlink" title="回到磁盘根"></a>回到磁盘根</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> \</span><br></pre></td></tr></table></figure>
-
-<h2 id="列出当前文件夹"><a href="#列出当前文件夹" class="headerlink" title="列出当前文件夹"></a>列出当前文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
-
-<h2 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">md</span> $directory</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除文件夹"><a href="#删除文件夹" class="headerlink" title="删除文件夹"></a>删除文件夹</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rd</span> $directory</span><br></pre></td></tr></table></figure>
-
-<h2 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="built_in">nul</span>&gt;$file</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $content&gt;$file</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">del</span> $file</span><br></pre></td></tr></table></figure>
-
-<h2 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">copy</span> $source_file $target_file</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span> $file</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看文件类型"><a href="#查看文件类型" class="headerlink" title="查看文件类型"></a>查看文件类型</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">file $file</span><br></pre></td></tr></table></figure>
-
-<h2 id="从-cmd-打开图形界面"><a href="#从-cmd-打开图形界面" class="headerlink" title="从 cmd 打开图形界面"></a>从 cmd 打开图形界面</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start</span> .</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start</span> $file</span><br></pre></td></tr></table></figure>
-
-<h2 id="清屏"><a href="#清屏" class="headerlink" title="清屏"></a>清屏</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cls</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>windows</category>
-      </categories>
-      <tags>
-        <tag>windows</tag>
-        <tag>cmd</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>curl的基本使用</title>
     <url>/2020/11/15/curl%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="/img/curl_title.png" alt="curl"></p>
@@ -374,8 +374,7 @@
   <entry>
     <title>docker和docker-compose的安装</title>
     <url>/2020/11/21/docker%E7%9A%84%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<hr>
-<p><img src="/img/docker_installation_title.png" alt="docker"></p>
+    <content><![CDATA[<p><img src="/img/docker_installation_title.png" alt="docker"></p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux 或 Windows 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
 <p>docker 在各个平台上都提供了安装，下面记录一下各平台的安装方式。</p>
 <a id="more"></a>
@@ -417,10 +416,94 @@
         <category>container</category>
       </categories>
       <tags>
-        <tag>linux</tag>
         <tag>windows</tag>
+        <tag>linux</tag>
         <tag>macos</tag>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>es6备忘录</title>
+    <url>/2021/02/16/es6%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p><img src="/img/es6_title.jpg" alt="es6"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>ES6，全称 ECMAScript 6.0，是 JavaScript 的下一个版本标准，2015.06 发版。</p>
+<p>ES6 主要是为了解决 ES5 的先天不足，为其添加了许多新的语法特性，ES6 是 ECMAScript 标准十余年来变动最大的一个版本。</p>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><h2 id="…扩展运算符"><a href="#…扩展运算符" class="headerlink" title="…扩展运算符"></a>…扩展运算符</h2><h2 id="模版字符串"><a href="#模版字符串" class="headerlink" title="${}模版字符串"></a><code>$&#123;&#125;</code>模版字符串</h2><h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><ul>
+<li>str.includes</li>
+<li>str.startWith</li>
+<li>str.endWith</li>
+<li>str.repeat</li>
+<li>str.padStart</li>
+<li>str.padEnd</li>
+<li>str.indexOf</li>
+</ul>
+<h2 id="array"><a href="#array" class="headerlink" title="array"></a>array</h2><ul>
+<li>Array.from</li>
+<li>Array.of</li>
+<li>arr.foreach</li>
+<li>arr.map</li>
+<li>arr.filter</li>
+<li>arr.find</li>
+<li>arr.findIndex</li>
+<li>arr.some</li>
+<li>arr.every</li>
+<li>arr.reduce</li>
+<li>arr.reduceRight</li>
+<li>arr.fill</li>
+<li>arr.includes</li>
+<li>arr.indexOf</li>
+<li>arr.keys()</li>
+<li>arr.values()</li>
+<li>arr.entries()</li>
+</ul>
+<h2 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h2><ul>
+<li>for of</li>
+<li>for in</li>
+</ul>
+<h2 id="object"><a href="#object" class="headerlink" title="object"></a>object</h2><ul>
+<li>Object.is</li>
+<li>Object.assign</li>
+<li>Object.keys</li>
+<li>Object.entries</li>
+<li>Object.values</li>
+</ul>
+<h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Promise.resolve</li>
+<li>Promise.reject</li>
+<li>Promise.all([p1,p2,p3])</li>
+<li>Promise.race([p1,p2,p3])</li>
+</ul>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><ul>
+<li>set.add</li>
+<li>set.delete</li>
+<li>set.has</li>
+<li>set.clear</li>
+<li>set.keys</li>
+<li>set.values</li>
+<li>set.entries</li>
+<li>set.foreach</li>
+<li>set.size</li>
+</ul>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><ul>
+<li>map.set</li>
+<li>map.get</li>
+<li>map.has</li>
+<li>map.delete</li>
+<li>map.clear</li>
+<li>map.entries</li>
+<li>map.keys</li>
+<li>map.values</li>
+<li>map.foreach</li>
+<li>map.size</li>
+</ul>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>es6</tag>
       </tags>
   </entry>
   <entry>
@@ -953,7 +1036,7 @@
 <tr>
 <td>AllowUsers</td>
 <td></td>
-<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么将仅允许这些用户登录，而拒绝其它所有用户。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。例如:AllowUsers <a href="mailto:&#x61;&#100;&#109;&#x69;&#x6e;&#x40;&#49;&#57;&#50;&#46;&#49;&#x36;&#x38;&#x2e;&#48;&#46;&#x31;">&#x61;&#100;&#109;&#x69;&#x6e;&#x40;&#49;&#57;&#50;&#46;&#49;&#x36;&#x38;&#x2e;&#48;&#46;&#x31;</a>。指定多用户用空格:AllowUsers <a href="mailto:&#x61;&#100;&#x6d;&#105;&#x6e;&#64;&#49;&#57;&#x32;&#x2e;&#49;&#x36;&#56;&#46;&#48;&#46;&#49;">&#x61;&#100;&#x6d;&#105;&#x6e;&#64;&#49;&#57;&#x32;&#x2e;&#49;&#x36;&#56;&#46;&#48;&#46;&#49;</a> user1</td>
+<td>这个指令后面跟着一串用空格分隔的用户名列表(其中可以使用”*“和”?”通配符)。默认允许所有用户登录。如果使用了这个指令，那么将仅允许这些用户登录，而拒绝其它所有用户。如果指定了 USER@HOST 模式的用户，那么 USER 和 HOST 将同时被检查。例如:AllowUsers <a href="mailto:&#97;&#100;&#x6d;&#x69;&#110;&#64;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#x38;&#x2e;&#48;&#46;&#49;">&#97;&#100;&#x6d;&#x69;&#110;&#64;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#x38;&#x2e;&#48;&#46;&#49;</a>。指定多用户用空格:AllowUsers <a href="mailto:&#97;&#x64;&#x6d;&#x69;&#x6e;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#x38;&#x2e;&#48;&#x2e;&#x31;">&#97;&#x64;&#x6d;&#x69;&#x6e;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#x38;&#x2e;&#48;&#x2e;&#x31;</a> user1</td>
 </tr>
 <tr>
 <td>AllowGroups</td>
@@ -1363,6 +1446,35 @@
       </categories>
       <tags>
         <tag>unity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vagrant常用命令及配置</title>
+    <url>/2021/02/16/vagrant%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><img src="/img/vagrant_title.png" alt="vagrant"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Vagrant 是一个基于 Ruby 的工具，用于创建和部署虚拟化开发环境。它使用 Oracle 的开源 VirtualBox 虚拟化系统，使用 Chef 创建自动化虚拟环境。</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<li>vagrant init</li>
+<li>vagrant up</li>
+<li>vagrant global-status</li>
+<li>vagrant status</li>
+<li>vagrant ssh</li>
+<li>vagrant validate</li>
+<li>vagrant reload</li>
+<li>vagrant provision</li>
+<li>vagrant suspend</li>
+<li>vagrant resume</li>
+<li>vagrant halt</li>
+<li>vagrant destroy</li>
+</ul>
+<h2 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">config.vm.box = <span class="string">&quot;roger-ubuntu&quot;</span></span><br><span class="line">config.vm.hostname = <span class="string">&quot;roger-ubuntu&quot;</span></span><br><span class="line">config.vm.network <span class="string">&quot;forwarded_port&quot;</span>, <span class="symbol">guest:</span> <span class="number">80</span>, <span class="symbol">host:</span> <span class="number">80</span>, <span class="symbol">auto_correct:</span> <span class="literal">true</span></span><br><span class="line">config.vm.provider <span class="string">&quot;virtualbox&quot;</span> <span class="keyword">do</span> <span class="params">|vb|</span></span><br><span class="line">  vb.customize [<span class="string">&quot;modifyvm&quot;</span>, <span class="symbol">:id</span>, <span class="string">&quot;--memory&quot;</span>, <span class="string">&quot;4096&quot;</span>]</span><br><span class="line">  vb.customize [<span class="string">&quot;modifyvm&quot;</span>, <span class="symbol">:id</span>, <span class="string">&quot;--cpus&quot;</span>, <span class="string">&quot;4&quot;</span>]</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">config.vm.network <span class="string">&quot;private_network&quot;</span>, <span class="symbol">ip:</span> <span class="string">&quot;192.168.1.100&quot;</span></span><br><span class="line">config.vm.synced_folder <span class="string">&quot;.&quot;</span>, <span class="string">&quot;/vagrant&quot;</span>, <span class="symbol">enabled:</span> <span class="literal">false</span></span><br><span class="line">config.vm.synced_folder <span class="string">&quot;.&quot;</span>, <span class="string">&quot;/home/vagrant/share&quot;</span></span><br><span class="line">config.vm.provision <span class="string">&quot;shell&quot;</span>, <span class="symbol">path:</span> <span class="string">&quot;./provision/install.sh&quot;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>vagrant</category>
+      </categories>
+      <tags>
+        <tag>vagrant</tag>
+        <tag>virtualbox</tag>
       </tags>
   </entry>
   <entry>
